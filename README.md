@@ -34,7 +34,7 @@ You'll also find study materials categorized based on topics to help in your lea
 | Project Name       | Description                                 | Tech Stack            |
 |--------------------|---------------------------------------------|-----------------------|
 | **Codecademy Clone** | A website similar to Codecademy for learning | HTML, CSS, JavaScript  |
-| **WhatsApp Bot**    | A bot that replies in Telugu automatically   | Python, Selenium       |
+| **WhatsApp Bot**(To Do)   | A bot that replies in Telugu automatically   | Python, Selenium       |
 | **AI Image Classifier** | An AI that classifies images              | Python, TensorFlow     |
 
 ---
