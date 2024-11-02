@@ -1,0 +1,2529 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+% Page setup
+\geometry{a4paper, margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Your Name Here}
+\lhead{Solution Set}
+\cfoot{\thepage}
+
+\title{Solution Set for Math Problems}
+\author{Your Name Here}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1: Evaluating the Double Integral}
+Evaluate the double integral 
+\[
+\iint_R (x - y)^2 \cos^2(x + y) \, dx \, dy,
+\]
+where \( R \) is the rhombus with vertices at \( (\pi, 0) \), \( (2\pi, \pi) \), \( (\pi, 2\pi) \), and \( (0, \pi) \).
+
+\subsection*{Solution}
+To evaluate the double integral, we start with a coordinate transformation that simplifies the region and the integrand.
+
+\subsubsection*{Step 1: Define a Coordinate Transformation}
+Given the symmetry of the rhombus, let’s introduce new variables:
+\[
+u = x + y \quad \text{and} \quad v = x - y.
+\]
+
+In these coordinates:
+- The integrand becomes \( v^2 \cos^2(u) \).
+- The Jacobian determinant for this transformation is calculated as follows:
+\[
+\frac{\partial(x, y)}{\partial(u, v)} = 
+\begin{vmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+\end{vmatrix} = \frac{1}{2}.
+\]
+
+Thus, \( dx \, dy = \frac{1}{2} \, du \, dv \).
+
+\subsubsection*{Step 2: Transform the Region \( R \)}
+Now, we find the bounds for \( u \) and \( v \) in the region \( R \):
+1. At \( (x, y) = (\pi, 0) \):
+   \[
+   u = \pi + 0 = \pi, \quad v = \pi - 0 = \pi.
+   \]
+
+2. At \( (x, y) = (2\pi, \pi) \):
+   \[
+   u = 2\pi + \pi = 3\pi, \quad v = 2\pi - \pi = \pi.
+   \]
+
+3. At \( (x, y) = (\pi, 2\pi) \):
+   \[
+   u = \pi + 2\pi = 3\pi, \quad v = \pi - 2\pi = -\pi.
+   \]
+
+4. At \( (x, y) = (0, \pi) \):
+   \[
+   u = 0 + \pi = \pi, \quad v = 0 - \pi = -\pi.
+   \]
+
+So, in the new coordinates, the region \( R \) is defined by:
+\[
+\pi \leq u \leq 3\pi \quad \text{and} \quad -\pi \leq v \leq \pi.
+\]
+
+\subsubsection*{Step 3: Set Up the Integral}
+In terms of \( u \) and \( v \), the integral becomes:
+\[
+\iint_R (x - y)^2 \cos^2(x + y) \, dx \, dy = \int_{\pi}^{3\pi} \int_{-\pi}^{\pi} v^2 \cos^2(u) \cdot \frac{1}{2} \, dv \, du.
+\]
+
+Simplify to:
+\[
+\frac{1}{2} \int_{\pi}^{3\pi} \cos^2(u) \, du \int_{-\pi}^{\pi} v^2 \, dv.
+\]
+
+\subsubsection*{Step 4: Evaluate Each Integral Separately}
+1. **Integrate with respect to \( v \):**
+   \[
+   \int_{-\pi}^{\pi} v^2 \, dv = \left[ \frac{v^3}{3} \right]_{-\pi}^{\pi} = \frac{\pi^3}{3} - \left(-\frac{\pi^3}{3}\right) = \frac{2\pi^3}{3}.
+   \]
+
+2. **Integrate with respect to \( u \):**
+   Use the identity \( \cos^2(u) = \frac{1 + \cos(2u)}{2} \):
+   \[
+   \int_{\pi}^{3\pi} \cos^2(u) \, du = \int_{\pi}^{3\pi} \frac{1 + \cos(2u)}{2} \, du.
+   \]
+   Split the integral:
+   \[
+   = \frac{1}{2} \int_{\pi}^{3\pi} 1 \, du + \frac{1}{2} \int_{\pi}^{3\pi} \cos(2u) \, du.
+   \]
+
+   For the first term:
+   \[
+   \frac{1}{2} \int_{\pi}^{3\pi} 1 \, du = \frac{1}{2} \cdot (3\pi - \pi) = \frac{1}{2} \cdot 2\pi = \pi.
+   \]
+
+   For the second term:
+   \[
+   \frac{1}{2} \int_{\pi}^{3\pi} \cos(2u) \, du = \frac{1}{2} \cdot \frac{\sin(2u)}{2} \Big|_{\pi}^{3\pi} = \frac{1}{4} \left( \sin(6\pi) - \sin(2\pi) \right) = 0.
+   \]
+
+   So, the integral with respect to \( u \) is simply \( \pi \).
+
+\subsubsection*{Step 5: Combine Results}
+Now, we can put everything together:
+\[
+\frac{1}{2} \cdot \pi \cdot \frac{2\pi^3}{3} = \frac{\pi \cdot \pi^3}{3} = \frac{\pi^4}{3}.
+\]
+
+\subsubsection*{Final Answer}
+The value of the integral is:
+\[
+\boxed{\frac{\pi^4}{3}}.
+\]
+
+
+\section*{Problem 2: Evaluating the Area Using Double Integration}
+Using double integration, evaluate the area of:
+\begin{enumerate}
+    \item the cardioid \( r = a(1 - \cos \theta) \)
+    \item the lemniscate \( r^2 = a^2 \cos 2\theta \)
+\end{enumerate}
+
+\subsection*{Solution for (i): Cardioid \( r = a(1 - \cos \theta) \)}
+To find the area enclosed by the cardioid \( r = a(1 - \cos \theta) \), we can set up the integral in polar coordinates. In polar coordinates, the area \( A \) is given by:
+\[
+A = \frac{1}{2} \int_{\alpha}^{\beta} \int_0^{r(\theta)} r \, dr \, d\theta.
+\]
+
+#### Step 1: Set Up the Integral
+For the cardioid \( r = a(1 - \cos \theta) \):
+1. The range for \( \theta \) is from \( 0 \) to \( 2\pi \) to cover the entire cardioid.
+2. Substitute \( r = a(1 - \cos \theta) \).
+
+Thus, the area is:
+\[
+A = \frac{1}{2} \int_0^{2\pi} \int_0^{a(1 - \cos \theta)} r \, dr \, d\theta.
+\]
+
+#### Step 2: Evaluate the Integral
+First, integrate with respect to \( r \):
+\[
+A = \frac{1}{2} \int_0^{2\pi} \left[ \frac{r^2}{2} \right]_0^{a(1 - \cos \theta)} d\theta.
+\]
+
+Simplify:
+\[
+A = \frac{1}{2} \int_0^{2\pi} \frac{a^2(1 - \cos \theta)^2}{2} \, d\theta = \frac{a^2}{4} \int_0^{2\pi} (1 - \cos \theta)^2 \, d\theta.
+\]
+
+Expand \( (1 - \cos \theta)^2 \):
+\[
+A = \frac{a^2}{4} \int_0^{2\pi} (1 - 2\cos \theta + \cos^2 \theta) \, d\theta.
+\]
+
+Use the identity \( \cos^2 \theta = \frac{1 + \cos(2\theta)}{2} \):
+\[
+A = \frac{a^2}{4} \int_0^{2\pi} \left( 1 - 2\cos \theta + \frac{1 + \cos(2\theta)}{2} \right) \, d\theta.
+\]
+
+Combine terms:
+\[
+A = \frac{a^2}{4} \int_0^{2\pi} \left( \frac{3}{2} - 2\cos \theta + \frac{\cos(2\theta)}{2} \right) \, d\theta.
+\]
+
+Now, integrate each term separately:
+1. \( \int_0^{2\pi} \frac{3}{2} \, d\theta = \frac{3}{2} \cdot 2\pi = 3\pi \).
+2. \( \int_0^{2\pi} -2\cos \theta \, d\theta = 0 \) (since \( \cos \theta \) is symmetric).
+3. \( \int_0^{2\pi} \frac{\cos(2\theta)}{2} \, d\theta = 0 \).
+
+So,
+\[
+A = \frac{a^2}{4} \cdot 3\pi = \frac{3\pi a^2}{4}.
+\]
+
+#### Final Answer
+The area enclosed by the cardioid is:
+\[
+\boxed{\frac{3\pi a^2}{4}}.
+\]
+
+\subsection*{Solution for (ii): Lemniscate \( r^2 = a^2 \cos 2\theta \)}
+To find the area enclosed by the lemniscate \( r^2 = a^2 \cos 2\theta \), note that it is symmetric about both axes. We can evaluate the area in the first quadrant and then multiply by 4.
+
+#### Step 1: Set Up the Integral
+Rewrite \( r \) in terms of \( \cos 2\theta \):
+\[
+r = \pm a \sqrt{\cos 2\theta}.
+\]
+
+The range of \( \theta \) for one loop is \( -\frac{\pi}{4} \) to \( \frac{\pi}{4} \).
+
+The area is:
+\[
+A = 4 \cdot \frac{1}{2} \int_0^{\frac{\pi}{4}} \int_0^{a \sqrt{\cos 2\theta}} r \, dr \, d\theta.
+\]
+
+Simplify:
+\[
+A = 2 \int_0^{\frac{\pi}{4}} \int_0^{a \sqrt{\cos 2\theta}} r \, dr \, d\theta.
+\]
+
+#### Step 2: Evaluate the Integral
+First, integrate with respect to \( r \):
+\[
+A = 2 \int_0^{\frac{\pi}{4}} \left[ \frac{r^2}{2} \right]_0^{a \sqrt{\cos 2\theta}} d\theta.
+\]
+
+Substitute the limits:
+\[
+A = 2 \int_0^{\frac{\pi}{4}} \frac{a^2 \cos 2\theta}{2} \, d\theta = a^2 \int_0^{\frac{\pi}{4}} \cos 2\theta \, d\theta.
+\]
+
+Integrate with respect to \( \theta \):
+\[
+A = a^2 \left[ \frac{\sin 2\theta}{2} \right]_0^{\frac{\pi}{4}} = a^2 \cdot \frac{\sin \frac{\pi}{2}}{2} = a^2 \cdot \frac{1}{2} = \frac{a^2}{2}.
+\]
+
+#### Final Answer
+The area enclosed by the lemniscate is:
+\[
+\boxed{\frac{a^2}{2}}.
+\]
+
+
+\section*{Problem 3: Evaluating the Area Between a Parabola and a Line}
+Using double integration, evaluate the area lying between the parabola \( y = 4x - x^2 \) and the line \( y = x \).
+
+\subsection*{Solution}
+To find the area between the curves \( y = 4x - x^2 \) and \( y = x \), we will:
+1. Find the points of intersection of the curves.
+2. Set up the integral to compute the area.
+
+#### Step 1: Find Points of Intersection
+Set \( y = 4x - x^2 \) equal to \( y = x \):
+\[
+4x - x^2 = x.
+\]
+Rearrange to form a quadratic equation:
+\[
+-x^2 + 3x = 0.
+\]
+Factor out \( x \):
+\[
+x(x - 3) = 0.
+\]
+Thus, \( x = 0 \) and \( x = 3 \).
+
+Substitute \( x = 0 \) and \( x = 3 \) back into \( y = x \) to find the \( y \)-coordinates:
+\[
+(0, 0) \quad \text{and} \quad (3, 3).
+\]
+
+So, the region of interest is bounded by \( x = 0 \) and \( x = 3 \).
+
+#### Step 2: Set Up the Integral
+For \( x \) in the interval \( [0, 3] \):
+- The line \( y = x \) is the lower curve.
+- The parabola \( y = 4x - x^2 \) is the upper curve.
+
+The area \( A \) can be expressed as:
+\[
+A = \int_{0}^{3} \int_{x}^{4x - x^2} dy \, dx.
+\]
+
+#### Step 3: Evaluate the Integral
+First, integrate with respect to \( y \):
+\[
+A = \int_{0}^{3} \left[ y \right]_{y=x}^{y=4x - x^2} \, dx.
+\]
+
+Substitute the limits:
+\[
+A = \int_{0}^{3} \left( (4x - x^2) - x \right) dx.
+\]
+
+Simplify the expression inside the integral:
+\[
+A = \int_{0}^{3} (4x - x^2 - x) \, dx = \int_{0}^{3} (3x - x^2) \, dx.
+\]
+
+#### Step 4: Integrate with Respect to \( x \)
+Now, split the integral and integrate term by term:
+\[
+A = \int_{0}^{3} 3x \, dx - \int_{0}^{3} x^2 \, dx.
+\]
+
+Evaluate each integral separately:
+1. For \( \int_{0}^{3} 3x \, dx \):
+   \[
+   \int_{0}^{3} 3x \, dx = 3 \int_{0}^{3} x \, dx = 3 \left[ \frac{x^2}{2} \right]_{0}^{3} = 3 \cdot \frac{9}{2} = \frac{27}{2}.
+   \]
+
+2. For \( \int_{0}^{3} x^2 \, dx \):
+   \[
+   \int_{0}^{3} x^2 \, dx = \left[ \frac{x^3}{3} \right]_{0}^{3} = \frac{27}{3} = 9.
+   \]
+
+Subtract the results:
+\[
+A = \frac{27}{2} - 9 = \frac{27}{2} - \frac{18}{2} = \frac{9}{2}.
+\]
+
+#### Final Answer
+The area lying between the parabola \( y = 4x - x^2 \) and the line \( y = x \) is:
+\[
+\boxed{\frac{9}{2}}.
+\]
+
+
+\section*{Problem 4: Evaluating the Area Between the Curves}
+Using double integration, evaluate the area lying between the curves \( xy = 2 \), \( 4y = x^2 \), and \( y = 4 \).
+
+\subsection*{Solution}
+To find the area between the curves \( xy = 2 \), \( 4y = x^2 \), and \( y = 4 \), we will:
+1. Find the points of intersection of the curves.
+2. Set up the integral to compute the area.
+
+#### Step 1: Find Points of Intersection
+First, we rearrange the equations to find their intersection points:
+
+1. **Curve \( xy = 2 \)** can be expressed as:
+   \[
+   y = \frac{2}{x}.
+   \]
+
+2. **Curve \( 4y = x^2 \)** can be expressed as:
+   \[
+   y = \frac{x^2}{4}.
+   \]
+
+3. **Curve \( y = 4 \)** is simply a horizontal line.
+
+We find the intersection points:
+
+**Intersection of \( y = \frac{2}{x} \) and \( y = \frac{x^2}{4} \)**:
+Set \( \frac{2}{x} = \frac{x^2}{4} \):
+\[
+2 \cdot 4 = x^3 \implies x^3 = 8 \implies x = 2.
+\]
+Substituting \( x = 2 \) back to find \( y \):
+\[
+y = \frac{2}{2} = 1.
+\]
+Thus, the intersection point is \( (2, 1) \).
+
+**Intersection of \( y = \frac{2}{x} \) and \( y = 4 \)**:
+Set \( \frac{2}{x} = 4 \):
+\[
+2 = 4x \implies x = \frac{1}{2}.
+\]
+Substituting \( x = \frac{1}{2} \) back to find \( y \):
+\[
+y = 4.
+\]
+Thus, the intersection point is \( \left(\frac{1}{2}, 4\right) \).
+
+**Intersection of \( y = \frac{x^2}{4} \) and \( y = 4 \)**:
+Set \( \frac{x^2}{4} = 4 \):
+\[
+x^2 = 16 \implies x = 4 \quad \text{or} \quad x = -4.
+\]
+For the positive branch, we have \( (4, 4) \).
+
+So, the points of intersection are \( \left(\frac{1}{2}, 4\right) \), \( (2, 1) \), and \( (4, 4) \).
+
+#### Step 2: Set Up the Integral
+The area \( A \) can be computed by setting up a double integral. We will integrate with respect to \( y \) first.
+
+The area is given by the difference between the outer and inner curves.
+
+1. **Vertical bounds**: From \( y = 1 \) to \( y = 4 \).
+2. **Horizontal bounds** for the curves:
+   - For \( y = \frac{x^2}{4} \): \( x = 2\sqrt{y} \).
+   - For \( y = \frac{2}{x} \): \( x = \frac{2}{y} \).
+
+Thus, the area \( A \) is given by:
+\[
+A = \int_{1}^{4} \left(2\sqrt{y} - \frac{2}{y}\right) dy.
+\]
+
+#### Step 3: Evaluate the Integral
+Evaluate each term:
+\[
+A = \int_{1}^{4} 2\sqrt{y} \, dy - \int_{1}^{4} \frac{2}{y} \, dy.
+\]
+
+1. **First integral**:
+\[
+\int 2\sqrt{y} \, dy = \frac{2 \cdot \frac{2}{3}y^{\frac{3}{2}}}{3} = \frac{4}{3} y^{\frac{3}{2}}.
+\]
+Thus,
+\[
+\int_{1}^{4} 2\sqrt{y} \, dy = \left[ \frac{4}{3} y^{\frac{3}{2}} \right]_{1}^{4} = \frac{4}{3} \left(8 - 1\right) = \frac{4}{3} \cdot 7 = \frac{28}{3}.
+\]
+
+2. **Second integral**:
+\[
+\int \frac{2}{y} \, dy = 2 \ln |y|.
+\]
+Thus,
+\[
+\int_{1}^{4} \frac{2}{y} \, dy = \left[ 2 \ln |y| \right]_{1}^{4} = 2 (\ln 4 - \ln 1) = 2 \ln 4.
+\]
+
+Combine both results:
+\[
+A = \frac{28}{3} - 2 \ln 4.
+\]
+
+#### Final Answer
+The area lying between the curves \( xy = 2 \), \( 4y = x^2 \), and \( y = 4 \) is:
+\[
+\boxed{ \frac{28}{3} - 2 \ln 4 }.
+\]
+
+
+\maketitle
+
+\section*{Problem 2: Finding the Volume of an Ellipsoid}
+Using double integration, find the volume of the ellipsoid 
+
+
+\[
+\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1.
+\]
+
+
+
+\subsection*{Solution}
+To find the volume of the ellipsoid, we use a coordinate transformation to switch to spherical coordinates.
+
+\subsubsection*{Step 1: Define a Coordinate Transformation}
+In spherical coordinates, the transformations are:
+
+
+\[
+x = a \rho \sin\theta \cos\phi,
+\]
+
+
+
+
+\[
+y = b \rho \sin\theta \sin\phi,
+\]
+
+
+
+
+\[
+z = c \rho \cos\theta.
+\]
+
+
+
+\subsubsection*{Step 2: Set up the Jacobian}
+The Jacobian determinant for this transformation is:
+
+
+\[
+\frac{\partial(x, y, z)}{\partial(\rho, \theta, \phi)} = abc \rho^2 \sin\theta.
+\]
+
+
+
+\subsubsection*{Step 3: Integrate in Spherical Coordinates}
+The volume integral in spherical coordinates is:
+
+
+\[
+V = \int_0^{2\pi} \int_0^{\pi} \int_0^1 abc \rho^2 \sin\theta \, d\rho \, d\theta \, d\phi.
+\]
+
+
+
+\subsubsection*{Step 4: Evaluate the Integral}
+First, integrate with respect to \( \rho \):
+
+
+\[
+\int_0^1 \rho^2 \, d\rho = \left[ \frac{\rho^3}{3} \right]_0^1 = \frac{1}{3}.
+\]
+
+
+
+Next, integrate with respect to \( \theta \):
+
+
+\[
+\int_0^{\pi} \sin\theta \, d\theta = \left[ -\cos\theta \right]_0^{\pi} = 2.
+\]
+
+
+
+Finally, integrate with respect to \( \phi \):
+
+
+\[
+\int_0^{2\pi} d\phi = 2\pi.
+\]
+
+
+
+Combining all these results:
+
+
+\[
+V = abc \times \frac{1}{3} \times 2 \times 2\pi = \frac{4}{3} \pi abc.
+\]
+
+
+
+Therefore, the volume of the ellipsoid is:
+
+
+\[
+V 
+
+\section*{Problem 7: Volume of a Cylinder Cut by a Plane}
+Find the volume of the cylinder \( x^2 + y^2 = a^2 \) above the xy-plane cut by the plane \( x + y + z = 2a \).
+
+\subsection*{Solution}
+To find the volume, we'll set up and evaluate the integral.
+
+\subsubsection*{Step 1: Parametrize the Cylinder}
+The cylinder can be parametrized in cylindrical coordinates as:
+
+
+\[
+x = a \cos\theta, \quad y = a \sin\theta.
+\]
+
+
+
+\subsubsection*{Step 2: Define the Plane Equation}
+The plane equation is:
+
+
+\[
+z = 2a - x - y.
+\]
+
+
+
+In cylindrical coordinates, this becomes:
+
+
+\[
+z = 2a - a \cos\theta - a \sin\theta.
+\]
+
+
+
+\subsubsection*{Step 3: Set up the Volume Integral}
+The volume integral in cylindrical coordinates is:
+
+
+\[
+V = \int_0^{2\pi} \int_0^a \left(2a - a \cos\theta - a \sin\theta\right) \, r \, dr \, d\theta.
+\]
+
+
+
+\subsubsection*{Step 4: Evaluate the Integral}
+First, integrate with respect to \( r \):
+
+
+\[
+\int_0^a r \, dr = \left[ \frac{r^2}{2} \right]_0^a = \frac{a^2}{2}.
+\]
+
+
+
+The integral now becomes:
+
+
+\[
+V = \frac{a^2}{2} \int_0^{2\pi} \left(2a - a \cos\theta - a \sin\theta\right) d\theta.
+\]
+
+
+
+Separate the integral into three parts:
+
+
+\[
+V = \frac{a^3}{2} \left( \int_0^{2\pi} 2 \, d\theta - \int_0^{2\pi} \cos\theta \, d\theta - \int_0^{2\pi} \sin\theta \, d\theta \right).
+\]
+
+
+
+Evaluate each integral:
+
+
+\[
+\int_0^{2\pi} d\theta = 2\pi,
+\]
+
+
+
+
+\[
+\int_0^{2\pi} \cos\theta \, d\theta = 0,
+\]
+
+
+
+
+\[
+\int_0^{2\pi} \sin\theta \, d\theta = 0.
+\]
+
+
+
+Combine the results:
+
+
+\[
+V = \frac{a^3}{2} \left( 2 \times 2\pi \right) = 2\pi a^3.
+\]
+
+
+
+Therefore, the volume of the cylinder is:
+
+
+\[
+V = 2\pi a^3.
+\]
+
+
+
+
+\section*{Problem 8: Volume of a Sphere with a Central Hole}
+A circular hole of radius \( b \) is made centrally through a sphere of radius \( a \). Find the volume of the remaining part.
+
+\subsection*{Solution}
+To find the volume of the remaining part, we need to subtract the volume of the cylindrical hole from the volume of the sphere.
+
+\subsubsection*{Step 1: Volume of the Sphere}
+The volume of a sphere of radius \( a \) is:
+
+
+\[
+V_{\text{sphere}} = \frac{4}{3} \pi a^3.
+\]
+
+
+
+\subsubsection*{Step 2: Volume of the Cylindrical Hole}
+The cylindrical hole has radius \( b \) and height \( 2\sqrt{a^2 - b^2} \) (since the height is the distance between the two circular caps). The volume of the cylindrical hole is:
+
+
+\[
+V_{\text{cylinder}} = \pi b^2 \cdot 2\sqrt{a^2 - b^2} = 2\pi b^2 \sqrt{a^2 - b^2}.
+\]
+
+
+
+\subsubsection*{Step 3: Volume of the Remaining Part}
+The volume of the remaining part is the volume of the sphere minus the volume of the cylindrical hole:
+
+
+\[
+V_{\text{remaining}} = V_{\text{sphere}} - V_{\text{cylinder}} = \frac{4}{3} \pi a^3 - 2\pi b^2 \sqrt{a^2 - b^2}.
+\]
+
+
+
+Therefore, the volume of the remaining part is:
+
+
+\[
+V_{\text{remaining}} = \frac{4}{3} \pi a^3 - 2\pi b^2 \sqrt{a^2 - b^2}.
+\]
+
+\section*{Problem 9: Mass, Center of Mass, and Moment of Inertia of a Lamina}
+Find (i) the mass, (ii) center of mass, and (iii) moment of inertia about axes of a lamina with density function \( f(x, y) = 6x \) of triangular shape bounded by the x-axis, the line \( y = x \), and the line \( y = 2 - x \).
+
+\subsection*{Solution}
+
+\subsubsection*{Step 1: Find the Mass}
+The mass \( M \) of the lamina is given by the double integral of the density function over the region \( R \):
+
+
+\[
+M = \iint_R 6x \, dA.
+\]
+
+
+
+The region \( R \) is the triangle bounded by \( y = 0 \), \( y = x \), and \( y = 2 - x \). The limits of integration can be set up as:
+
+
+\[
+\int_0^1 \int_0^y 6x \, dx \, dy + \int_1^2 \int_0^{2-y} 6x \, dx \, dy.
+\]
+
+
+
+Calculate the integrals:
+
+
+\[
+\int_0^1 \left[ 3x^2 \right]_0^y \, dy + \int_1^2 \left[ 3x^2 \right]_0^{2-y} \, dy = \int_0^1 3y^2 \, dy + \int_1^2 3(2-y)^2 \, dy.
+\]
+
+
+
+Evaluate these integrals:
+
+
+\[
+\left[ y^3 \right]_0^1 + \int_1^2 3(4 - 4y + y^2) \, dy = 1 + 3\left[ 4y - 2y^2 + \frac{y^3}{3} \right]_1^2 = 1 + 3(8 - 8 + \frac{8}{3} - 4 + 2 - \frac{1}{3}) = \frac{26}{3}.
+\]
+
+
+
+\subsubsection*{Step 2: Find the Center of Mass}
+The coordinates of the center of mass \( (\bar{x}, \bar{y}) \) are given by:
+
+
+\[
+\bar{x} = \frac{1}{M} \iint_R x \cdot 6x \, dA, \quad \bar{y} = \frac{1}{M} \iint_R y \cdot 6x \, dA.
+\]
+
+
+
+First, find \( \bar{x} \):
+
+
+\[
+\bar{x} = \frac{1}{M} \left( \int_0^1 \int_0^y 6x^2 \, dx \, dy + \int_1^2 \int_0^{2-y} 6x^2 \, dx \, dy \right).
+\]
+
+
+
+Evaluate the integrals:
+
+
+\[
+\int_0^1 \left[ 2x^3 \right]_0^y \, dy + \int_1^2 \left[ 2x^3 \right]_0^{2-y} \, dy = \int_0^1 2y^3 \, dy + \int_1^2 2(2-y)^3 \, dy.
+\]
+
+
+
+
+
+\[
+\bar{x} = \frac{1}{M} \left( \left[ \frac{y^4}{2} \right]_0^1 + \int_1^2 2(8 - 12y + 6y^2 - y^3) \, dy \right).
+\]
+
+
+
+
+
+\[
+\bar{x} = \frac{1}{M} \left( \frac{1}{2} + 2 \left[ 8y - 6y^2 + 2y^3 - \frac{y^4}{4} \right]_1^2 \right) = \frac{1}{M} \left( \frac{1}{2} + 2 (16 - 24 + 16 - 4 - (8 - 6 + 2 - \frac{1}{4})) \right).
+\]
+
+
+
+
+
+\[
+\bar{x} = \frac{1}{M} \left( \frac{1}{2} + 2 (2.75) \right) = \frac{1}{M} \left( \frac{1}{2} + 5.5 \right) = \frac{6}{M} = \frac{18}{26} = \frac{9}{13}.
+\]
+
+
+
+Next, find \( \bar{y} \):
+
+
+\[
+\bar{y} = \frac{1}{M} \left( \int_0^1 \int_0^y 6xy \, dx \, dy + \int_1^2 \int_0^{2-y} 6xy \, dx \, dy \right).
+\]
+
+
+
+Evaluate the integrals:
+
+
+\[
+\int_0^1 \left[ 3x^2y \right]_0^y \, dy + \int_1^2 \left[ 3x^2y \right]_0^{2-y} \, dy = \int_0^1 3y^3 \, dy + \int_1^2 3(2-y)^2 \cdot y \, dy.
+\]
+
+
+
+
+
+\[
+\bar{y} = \frac{1}{M} \left( \left[ \frac{3y^4}{4} \right]_0^1 + \int_1^2 3y(4 - 4y + y^2) \, dy \right).
+\]
+
+
+
+
+
+\[
+\bar{y} = \frac{1}{M} \left( \frac{3}{4} + 3 \left[ 4y - 2y^2 + \frac{y^3}{3} \right]_1^2 \right) = \frac{1}{M} \left( \frac{3}{4} + 3 (8 - 8 + 8 - 4 + 2 - 1) \right).
+\]
+
+
+
+
+
+\[
+\bar{y} = \frac{1}{M} \left( \frac{3}{4} + 3(3) \right) = \frac{1}{M} \left( \frac{3}{4} + 9 \right) = \frac{10.75}{M} = \frac{32.25}{26} = \frac{16.125}{13}.
+\]
+
+
+
+Therefore, the center of mass is:
+
+
+\[
+(\bar{x}, \bar{y}) = \left(\frac{9}{13}, \frac{16.125}{13}\right).
+\]
+
+
+
+\subsubsection*{Step 3: Find the Moment of Inertia}
+The moment of inertia \( I \) about the x-axis is given by:
+
+
+\[
+I_x = \iint_R y^2 \cdot 6x \, dA.
+\]
+
+
+
+Evaluate this integral:
+
+
+\[
+I_x = \int_0^1 \int_0^y 6xy^2 \, dx \, dy + \int_1^2 \int_0^{2-y} 6xy^2 \, dx \, dy.
+\]
+
+
+
+
+
+\[
+I_x = \int_0^1 \left[ 3x^2 y^2 \right]_0^y \, dy + \int_1^2 \left[ 3x^2 y^2 \right]_0^{2-y} \, dy = \int_0^1 3y^4 \, dy + \int_1^2 3(2-y)^2 \cdot y^2 \, dy.
+\]
+
+
+
+Evaluate these integrals:
+
+
+\[
+I_x = \left[ \frac{3y^5}{5} \right]_0^1 + \int_1^2 3y^2(4 - 4y + y^2) \, dy.
+\]
+
+
+
+
+
+\[
+I_x = \frac{3}{5} + 3 \left[ \frac{4y^3}{3} - y^4 + \frac{y^5}{5} \right]_1^2 = \frac{3}{5} + 3 (16 - 8 + 2 - \frac{32}{3} + 1 - \frac{1}{5}).
+\]
+
+
+
+
+
+\[
+I_x = \frac{3}{5} + 3 \left(2.8 - 1.0667 + \frac{1}{3}\right) = \frac{3}{5} + 3(2.0667).
+\]
+
+
+
+
+
+\[
+I_x = \frac{3}{5} + 6.2 = \frac{3 + 30}{5} = 6.6.
+\]
+
+
+
+Therefore, the moment of inertia about the x-axis is:
+
+
+\[
+I_x = 6.6.
+\]
+
+\section*{Problem 10: Mass, Center of Mass, and Moment of Inertia of a Region}
+Let \( R \) be the unit square, i.e., \( R = \{ (x, y) : 0 \le x \le 1, 0 \le y \le 1 \} \). Suppose the density at a point \( (x, y) \) of \( R \) is given by the function \( f(x, y) = \frac{1}{y+1} \), i.e., \( R \) is denser near the x-axis. 
+
+\subsection*{Solution}
+
+\subsubsection*{Step 1: Find the Mass}
+The mass \( M \) of the region is given by the double integral of the density function over the region \( R \):
+
+
+\[
+M = \iint_R \frac{1}{y+1} \, dA.
+\]
+
+
+
+The limits of integration are:
+
+
+\[
+M = \int_0^1 \int_0^1 \frac{1}{y+1} \, dy \, dx.
+\]
+
+
+
+Evaluate the inner integral:
+
+
+\[
+\int_0^1 \frac{1}{y+1} \, dy = \left[ \ln(y+1) \right]_0^1 = \ln(2).
+\]
+
+
+
+Now, evaluate the outer integral:
+
+
+\[
+M = \int_0^1 \ln(2) \, dx = \ln(2).
+\]
+
+
+
+\subsubsection*{Step 2: Find the Center of Mass}
+The coordinates of the center of mass \( (\bar{x}, \bar{y}) \) are given by:
+
+
+\[
+\bar{x} = \frac{1}{M} \iint_R x \cdot \frac{1}{y+1} \, dA, \quad \bar{y} = \frac{1}{M} \iint_R y \cdot \frac{1}{y+1} \, dA.
+\]
+
+
+
+First, find \( \bar{x} \):
+
+
+\[
+\bar{x} = \frac{1}{M} \int_0^1 \int_0^1 \frac{x}{y+1} \, dy \, dx.
+\]
+
+
+
+Evaluate the inner integral:
+
+
+\[
+\int_0^1 \frac{x}{y+1} \, dy = x \left[ \ln(y+1) \right]_0^1 = x \ln(2).
+\]
+
+
+
+Now, evaluate the outer integral:
+
+
+\[
+\bar{x} = \frac{1}{M} \int_0^1 x \ln(2) \, dx = \frac{\ln(2)}{M} \left[ \frac{x^2}{2} \right]_0^1 = \frac{\ln(2)}{\ln(2)} \cdot \frac{1}{2} = \frac{1}{2}.
+\]
+
+
+
+Next, find \( \bar{y} \):
+
+
+\[
+\bar{y} = \frac{1}{M} \int_0^1 \int_0^1 \frac{y}{y+1} \, dy \, dx.
+\]
+
+
+
+Evaluate the inner integral using integration by parts:
+
+
+\[
+\int_0^1 \frac{y}{y+1} \, dy = \int_0^1 \left( 1 - \frac{1}{y+1} \right) dy = \left[ y - \ln(y+1) \right]_0^1 = 1 - \ln(2).
+\]
+
+
+
+Now, evaluate the outer integral:
+
+
+\[
+\bar{y} = \frac{1}{M} \int_0^1 (1 - \ln(2)) \, dx = \frac{1 - \ln(2)}{\ln(2)} \int_0^1 dx = \frac{1 - \ln(2)}{\ln(2)}.
+\]
+
+
+
+Therefore, the coordinates of the center of mass are:
+
+
+\[
+\left( \bar{x}, \bar{y} \right) = \left( \frac{1}{2}, \frac{1 - \ln(2)}{\ln(2)} \right).
+\]
+
+
+
+\subsubsection*{Step 3: Find the Moment of Inertia}
+The moment of inertia \( I_x \) about the x-axis is given by:
+
+
+\[
+I_x = \iint_R y^2 \cdot \frac{1}{y+1} \, dA.
+\]
+
+
+
+The limits of integration are:
+
+
+\[
+I_x = \int_0^1 \int_0^1 \frac{y^2}{y+1} \, dy \, dx.
+\]
+
+
+
+Evaluate the inner integral using integration by parts:
+
+
+\[
+\int_0^1 \frac{y^2}{y+1} \, dy = \int_0^1 \left( y - \frac{y}{y+1} \right) dy = \left[ \frac{y^2}{2} - y + \ln(y+1) \right]_0^1 = \frac{1}{2} - 1 + \ln(2).
+\]
+
+
+
+Now, evaluate the outer integral:
+
+
+\[
+I_x = \int_0^1 \left( \frac{1}{2} - 1 + \ln(2) \right) dx = \left( \frac{1}{2} - 1 + \ln(2) \right).
+\]
+
+
+
+Simplify the expression:
+
+
+\[
+I_x = \frac{1}{2} - 1 + \ln(2) = \ln(2) - \frac{1}{2}.
+\]
+
+
+
+The moment of inertia about the x-axis is:
+
+
+\[
+I_x = \ln(2) - \frac{1}{2}.
+\]
+
+
+
+Similarly, the moment of inertia \( I_y \) about the y-axis is:
+
+
+\[
+I_y = \iint_R x^2 \cdot \frac{1}{y+1} \, dA.
+\]
+
+
+
+Evaluate the integral:
+
+
+\[
+I_y = \int_0^1 \int_0^1 \frac{x^2}{y+1} \, dy \, dx = \left( \int_0^1 \frac{x^2 \ln(2)}{\ln(2)} dx \right) = \left[ \frac{x^3}{3} \right]_0^1 = \frac{1}{3}.
+\]
+
+
+
+Therefore, the moments of inertia about the axes are:
+
+
+\[
+I_x = \ln(2) - \frac{1}{2}, \quad I_y = \frac{1}{3}.
+\]
+
+
+\section*{Problem 11: Volume Inside the Unit Sphere}
+Find the volume inside the unit sphere \( x^2 + y^2 + z^2 = 1 \).
+
+\subsection*{Solution}
+To find the volume inside the unit sphere, we can use spherical coordinates.
+
+\subsubsection*{Step 1: Define the Spherical Coordinate Transformation}
+The transformations to spherical coordinates are:
+
+
+\[
+x = \rho \sin\theta \cos\phi,
+\]
+
+
+
+
+\[
+y = \rho \sin\theta \sin\phi,
+\]
+
+
+
+
+\[
+z = \rho \cos\theta.
+\]
+
+
+
+\subsubsection*{Step 2: Set up the Volume Integral}
+The volume integral in spherical coordinates is:
+
+
+\[
+V = \int_0^{2\pi} \int_0^{\pi} \int_0^1 \rho^2 \sin\theta \, d\rho \, d\theta \, d\phi.
+\]
+
+
+
+\subsubsection*{Step 3: Evaluate the Integral}
+First, integrate with respect to \( \rho \):
+
+
+\[
+\int_0^1 \rho^2 \, d\rho = \left[ \frac{\rho^3}{3} \right]_0^1 = \frac{1}{3}.
+\]
+
+
+
+Next, integrate with respect to \( \theta \):
+
+
+\[
+\int_0^{\pi} \sin\theta \, d\theta = \left[ -\cos\theta \right]_0^{\pi} = 2.
+\]
+
+
+
+Finally, integrate with respect to \( \phi \):
+
+
+\[
+\int_0^{2\pi} d\phi = 2\pi.
+\]
+
+
+
+Combining all these results:
+
+
+\[
+V = \frac{1}{3} \times 2 \times 2\pi = \frac{4\pi}{3}.
+\]
+
+
+
+Therefore, the volume inside the unit sphere is:
+
+
+\[
+V = \frac{4}{3} \pi.
+\]
+
+
+\section*{Problem 12: Volume Inside an Ellipsoid}
+Find the volume inside the ellipsoid 
+
+
+\[
+\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1.
+\]
+
+
+
+\subsection*{Solution}
+To find the volume inside the ellipsoid, we can use a transformation to spherical coordinates.
+
+\subsubsection*{Step 1: Define the Spherical Coordinate Transformation}
+The transformations to spherical coordinates are:
+
+
+\[
+x = a \rho \sin\theta \cos\phi,
+\]
+
+
+
+
+\[
+y = b \rho \sin\theta \sin\phi,
+\]
+
+
+
+
+\[
+z = c \rho \cos\theta.
+\]
+
+
+
+\subsubsection*{Step 2: Set up the Volume Integral}
+The volume integral in spherical coordinates is:
+
+
+\[
+V = \int_0^{2\pi} \int_0^{\pi} \int_0^1 abc \rho^2 \sin\theta \, d\rho \, d\theta \, d\phi.
+\]
+
+
+
+\subsubsection*{Step 3: Evaluate the Integral}
+First, integrate with respect to \( \rho \):
+
+
+\[
+\int_0^1 \rho^2 \, d\rho = \left[ \frac{\rho^3}{3} \right]_0^1 = \frac{1}{3}.
+\]
+
+
+
+Next, integrate with respect to \( \theta \):
+
+
+\[
+\int_0^{\pi} \sin\theta \, d\theta = \left[ -\cos\theta \right]_0^{\pi} = 2.
+\]
+
+
+
+Finally, integrate with respect to \( \phi \):
+
+
+\[
+\int_0^{2\pi} d\phi = 2\pi.
+\]
+
+
+
+Combining all these results:
+
+
+\[
+V = abc \times \frac{1}{3} \times 2 \times 2\pi = \frac{4}{3} \pi abc.
+\]
+
+
+
+Therefore, the volume inside the ellipsoid is:
+
+
+\[
+V = \frac{4}{3} \pi abc.
+\]
+
+
+\section*{Problem 13: Volume of Tetrahedron T}
+Find the volume of tetrahedron \( T \) bounded by \( x \ge 0 \), \( y \ge 0 \), \( z \ge 0 \) and \( 2x + 3y + z \le 6 \).
+
+\subsection*{Solution}
+To find the volume of the tetrahedron, we use a triple integral over the region defined by the given inequalities.
+
+\subsubsection*{Step 1: Set up the Limits of Integration}
+The bounds for \( x \), \( y \), and \( z \) are derived from the constraints:
+
+
+\[
+0 \le x \le 3, \quad 0 \le y \le \frac{6 - 2x}{3}, \quad 0 \le z \le 6 - 2x - 3y.
+\]
+
+
+
+\subsubsection*{Step 2: Set up the Volume Integral}
+The volume integral is:
+
+
+\[
+V = \int_0^3 \int_0^{\frac{6-2x}{3}} \int_0^{6-2x-3y} dz \, dy \, dx.
+\]
+
+
+
+\subsubsection*{Step 3: Evaluate the Integral}
+First, integrate with respect to \( z \):
+
+
+\[
+\int_0^{6-2x-3y} dz = \left[ z \right]_0^{6-2x-3y} = 6 - 2x - 3y.
+\]
+
+
+
+Next, integrate with respect to \( y \):
+
+
+\[
+\int_0^{\frac{6-2x}{3}} (6 - 2x - 3y) \, dy = \int_0^{\frac{6-2x}{3}} 6 - 2x - 3y \, dy = \left[ 6y - 2xy - \frac{3y^2}{2} \right]_0^{\frac{6-2x}{3}}.
+\]
+
+
+
+Evaluate this integral:
+
+
+\[
+\left[ 6 \cdot \frac{6-2x}{3} - 2x \cdot \frac{6-2x}{3} - \frac{3 \cdot \left(\frac{6-2x}{3}\right)^2}{2} \right].
+\]
+
+
+
+Simplify the expression:
+
+
+\[
+\left[ \frac{6(6-2x)}{3} - \frac{2x(6-2x)}{3} - \frac{3(6-2x)^2}{18} \right].
+\]
+
+
+
+Simplify further:
+
+
+\[
+= \left[ \frac{36-12x}{3} - \frac{12x-4x^2}{3} - \frac{3(36-24x+4x^2)}{18} \right].
+\]
+
+
+
+Combine terms:
+
+
+\[
+= \left[ 12 - 4x - 4x + \frac{4x^2}{3} - \frac{(36-24x+4x^2)}{6} \right].
+\]
+
+
+
+Simplify:
+
+
+\[
+= \left[ 12 - 8x + \frac{4x^2}{3} - \frac{36-24x+4x^2}{6} \right].
+\]
+
+
+
+Combine fractions:
+
+
+\[
+= \left[ 12 - 8x + \frac{4x^2}{3} - \frac{36}{6} + \frac{24x}{6} - \frac{4x^2}{6} \right].
+\]
+
+
+
+Simplify:
+
+
+\[
+= \left[ 12 - 8x + \frac{4x^2}{3} - 6 + 4x - \frac{2x^2}{3} \right].
+\]
+
+
+
+Combine like terms:
+
+
+\[
+= \left[ 6 - 4x + \frac{2x^2}{3} \right].
+\]
+
+
+
+Now, integrate with respect to \( x \):
+
+
+\[
+\int_0^3 \left(6 - 4x + \frac{2x^2}{3}\right) \, dx = \left[ 6x - 2x^2 + \frac{2x^3}{9} \right]_0^3.
+\]
+
+
+
+Evaluate this integral:
+
+
+\[
+\left[ 6 \cdot 3 - 2 \cdot 9 + \frac{2 \cdot 27}{9} \right] = 18 - 18 + 6 = 6.
+\]
+
+
+
+Therefore, the volume of the tetrahedron is:
+
+
+\[
+V = 6.
+\]
+
+
+\section*{Problem 14: Evaluating the Triple Integral}
+Evaluate the triple integral 
+
+
+\[
+\iiint_G \sqrt{x^2 + z^2} \, dV,
+\]
+
+
+where \( G \) is the region bounded by the paraboloid \( y = x^2 + z^2 \) and the plane \( y = 4 \).
+
+\subsection*{Solution}
+To evaluate the triple integral, we use cylindrical coordinates.
+
+\subsubsection*{Step 1: Convert to Cylindrical Coordinates}
+In cylindrical coordinates, the transformations are:
+
+
+\[
+x = r \cos\theta, \quad y = y, \quad z = r \sin\theta.
+\]
+
+
+
+The given region \( G \) is bounded by \( y = r^2 \) and \( y = 4 \).
+
+\subsubsection*{Step 2: Set up the Limits of Integration}
+The limits for \( r \), \( \theta \), and \( y \) are:
+
+
+\[
+0 \le r \le 2, \quad 0 \le \theta \le 2\pi, \quad r^2 \le y \le 4.
+\]
+
+
+
+\subsubsection*{Step 3: Set up the Volume Integral}
+The integrand \( \sqrt{x^2 + z^2} \) in cylindrical coordinates is \( r \). The volume integral is:
+
+
+\[
+V = \int_0^{2\pi} \int_0^2 \int_{r^2}^4 r \, dy \, dr \, d\theta.
+\]
+
+
+
+\subsubsection*{Step 4: Evaluate the Integral}
+First, integrate with respect to \( y \):
+
+
+\[
+\int_{r^2}^4 r \, dy = r \left[ y \right]_{r^2}^4 = r (4 - r^2).
+\]
+
+
+
+Next, integrate with respect to \( r \):
+
+
+\[
+\int_0^2 r (4 - r^2) \, dr = \int_0^2 (4r - r^3) \, dr.
+\]
+
+
+
+Evaluate this integral:
+
+
+\[
+\left[ 2r^2 - \frac{r^4}{4} \right]_0^2 = \left( 2 \cdot 4 - \frac{16}{4} \right) = 4.
+\]
+
+
+
+Finally, integrate with respect to \( \theta \):
+
+
+\[
+\int_0^{2\pi} 4 \, d\theta = 4 \cdot 2\pi = 8\pi.
+\]
+
+
+
+Therefore, the value of the triple integral is:
+
+
+\[
+V = 8\pi.
+\]
+
+
+\section*{Problem 15: Limits of Integration for a Tetrahedron}
+Set up the limits of integration for evaluating the triple integral of a function \( F(x, y, z) \) over the tetrahedron \( D \) with vertices \( (0, 0, 0) \), \( (2, 0, 0) \), \( (0, 2, 0) \), and \( (0, 0, 2) \).
+
+\subsection*{Solution}
+The region \( D \) can be described by the following limits:
+
+
+\[
+\int_0^2 \int_0^{2-x} \int_0^{2-x-y} F(x, y, z) \, dz \, dy \, dx.
+\]
+
+
+\section*{Problem 16: Evaluating Integrals}
+Evaluate the following integrals:
+
+\subsection*{Part (i)}
+
+
+\[
+\int_0^a \int_0^a \int_0^a (xy + yz + zx) \, dx \, dy \, dz
+\]
+
+
+
+\subsubsection*{Solution}
+First, integrate with respect to \( x \):
+
+
+\[
+\int_0^a \int_0^a \left[ \frac{x^2 y}{2} + xyz + \frac{zx^2}{2} \right]_0^a \, dy \, dz = \int_0^a \int_0^a \left( \frac{a^2 y}{2} + a y z + \frac{za^2}{2} \right) \, dy \, dz.
+\]
+
+
+
+Simplify and combine like terms:
+
+
+\[
+= \int_0^a \int_0^a \left( \frac{a^2 y}{2} + a y z + \frac{za^2}{2} \right) \, dy \, dz.
+\]
+
+
+
+Next, integrate with respect to \( y \):
+
+
+\[
+= \int_0^a \left[ \frac{a^2 y^2}{4} + \frac{a y^2 z}{2} + \frac{za^2 y}{2} \right]_0^a \, dz = \int_0^a \left( \frac{a^4}{4} + \frac{a^3 z}{2} + \frac{za^3}{2} \right) \, dz.
+\]
+
+
+
+Combine like terms and simplify:
+
+
+\[
+= \int_0^a \left( \frac{a^4}{4} + a^3 z \right) \, dz.
+\]
+
+
+
+Finally, integrate with respect to \( z \):
+
+
+\[
+= \left[ \frac{a^4 z}{4} + \frac{a^3 z^2}{2} \right]_0^a = \frac{a^5}{4} + \frac{a^5}{2} = \frac{a^5}{4} + \frac{2a^5}{4} = \frac{3a^5}{4}.
+\]
+
+
+
+So, the value of the integral is:
+
+
+\[
+\frac{3a^5}{4}.
+\]
+
+
+
+\subsection*{Part (ii)}
+
+
+\[
+\int_0^4 \int_0^{\sqrt{z}} \int_0^{\sqrt{4z - x^2}} \, dy \, dx \, dz
+\]
+
+
+
+\subsubsection*{Solution}
+First, integrate with respect to \( y \):
+
+
+\[
+\int_0^{\sqrt{4z - x^2}} dy = \left[ y \right]_0^{\sqrt{4z - x^2}} = \sqrt{4z - x^2}.
+\]
+
+
+
+Next, integrate with respect to \( x \):
+
+
+\[
+\int_0^{\sqrt{z}} \sqrt{4z - x^2} \, dx.
+\]
+
+
+
+Make the substitution \( x = \sqrt{z} t \), \( dx = \sqrt{z} \, dt \):
+
+
+\[
+= \int_0^1 \sqrt{4z - z t^2} \cdot \sqrt{z} \, dt = z \int_0^1 \sqrt{4 - t^2} \, dt.
+\]
+
+
+
+Using the trigonometric substitution \( t = 2 \sin\theta \), \( dt = 2 \cos\theta \, d\theta \):
+
+
+\[
+= z \int_0^{\pi/2} 2 \cos^2\theta \, d\theta = 2z \left[ \frac{\theta}{2} + \frac{\sin(2\theta)}{4} \right]_0^{\pi/2} = 2z \cdot \frac{\pi}{4} = \frac{\pi z}{2}.
+\]
+
+
+
+Finally, integrate with respect to \( z \):
+
+
+\[
+\int_0^4 \frac{\pi z}{2} \, dz = \frac{\pi}{2} \left[ \frac{z^2}{2} \right]_0^4 = \frac{\pi}{2} \cdot \frac{16}{2} = 4\pi.
+\]
+
+
+
+So, the value of the integral is:
+
+
+\[
+4\pi.
+\]
+
+
+
+\subsection*{Part (iii)}
+
+
+\[
+\int_0^2 \int_0^2 \int_0^z (4 - x^2)(2x + y) \, dx \, dy \, dz
+\]
+
+
+
+\subsubsection*{Solution}
+First, integrate with respect to \( x \):
+
+
+\[
+\int_0^z (4 - x^2)(2x + y) \, dx.
+\]
+
+
+
+Expand the integrand:
+
+
+\[
+= \int_0^z (8x + 4xy - 2x^3 - x^2 y) \, dx.
+\]
+
+
+
+Integrate term by term:
+
+
+\[
+= \left[ 4x^2 + 2x^2 y - \frac{x^4}{2} - \frac{x^3 y}{3} \right]_0^z = 4z^2 + 2z^2 y - \frac{z^4}{2} - \frac{z^3 y}{3}.
+\]
+
+
+
+Next, integrate with respect to \( y \):
+
+
+\[
+\int_0^2 (4z^2 + 2z^2 y - \frac{z^4}{2} - \frac{z^3 y}{3}) \, dy.
+\]
+
+
+
+Integrate term by term:
+
+
+\[
+= \left[ 4z^2 y + z^2 y^2 - \frac{z^4 y}{2} - \frac{z^3 y^2}{6} \right]_0^2 = 8z^2 + 4z^2 - z^4 - \frac{2z^3}{3}.
+\]
+
+
+
+Combine like terms:
+
+
+\[
+= 12z^2 - z^4 - \frac{2z^3}{3}.
+\]
+
+
+
+Finally, integrate with respect to \( z \):
+
+
+\[
+\int_0^2 (12z^2 - z^4 - \frac{2z^3}{3}) \, dz.
+\]
+
+
+
+Integrate term by term:
+
+
+\[
+= \left[ 4z^3 - \frac{z^5}{5} - \frac{z^4}{6} \right]_0^2 = 32 - \frac{32}{5} - \frac{16}{3}.
+\]
+
+
+
+Simplify the expression:
+
+
+\[
+= 32 - \frac{32}{5} - \frac{16}{3} = 32 - 6.4 - 5.33 = 20.27.
+\]
+
+
+
+So, the value of the integral is approximately:
+
+
+\[
+20.27.
+\]
+
+
+\section*{Problem 17: Evaluating Integrals}
+A solid “trough” of constant density $\rho$ bounded below by the surface $z = 4y$, above by the plane $z = 4$, and on the ends by the planes $x = 1$ and $x = -0.1$. Find the center of mass and the moments of inertia with respect to the three axes.
+
+\subsection*{Center of Mass}
+The center of mass ($\bar{x}, \bar{y}, \bar{z}$) is given by:
+
+
+\[
+\bar{x} = \frac{1}{M} \int \int \int x \, dV, \quad \bar{y} = \frac{1}{M} \int \int \int y \, dV, \quad \bar{z} = \frac{1}{M} \int \int \int z \, dV
+\]
+
+
+Where $M$ is the total mass:
+
+
+\[
+M = \int \int \int \rho \, dV
+\]
+
+
+
+\subsection*{Moments of Inertia}
+The moments of inertia ($I_x, I_y, I_z$) with respect to the $x$-, $y$-, and $z$-axes are given by:
+
+
+\[
+I_x = \int \int \int (y^2 + z^2) \, dV, \quad I_y = \int \int \int (x^2 + z^2) \, dV, \quad I_z = \int \int \int (x^2 + y^2) \, dV
+\]
+
+
+
+\subsection*{Volume Element}
+Given $z = 4y$ and $z = 4$:
+
+
+\[
+dV = dx \, dy \, dz \quad \text{with bounds:} \quad -0.1 \leq x \leq 1, \quad 0 \leq y \leq 1, \quad 4y \leq z \leq 4
+\]
+
+
+
+\subsection*{Integrals}
+Calculate the total mass $M$:
+
+
+\[
+M = \rho \int_{-0.1}^{1} \int_{0}^{1} \int_{4y}^{4} dz \, dy \, dx
+\]
+
+
+
+
+\[
+M = \rho \int_{-0.1}^{1} \int_{0}^{1} (4 - 4y) \, dy \, dx
+\]
+
+
+
+
+\[
+M = \rho \int_{-0.1}^{1} \left[ 4y - 2y^2 \right]_0^1 \, dx
+\]
+
+
+
+
+\[
+M = \rho \int_{-0.1}^{1} (4 - 2) \, dx
+\]
+
+
+
+
+\[
+M = 2\rho \int_{-0.1}^{1} dx
+\]
+
+
+
+
+\[
+M = 2\rho \left[ x \right]_{-0.1}^{1}
+\]
+
+
+
+
+\[
+M = 2\rho (1 - (-0.1))
+\]
+
+
+
+
+\[
+M = 2\rho (1.1) = 2.2\rho
+\]
+
+
+
+Now, for the center of mass:
+
+
+\[
+\bar{x} = \frac{1}{2.2\rho} \int_{-0.1}^{1} \int_{0}^{1} \int_{4y}^{4} x \, dz \, dy \, dx
+\]
+
+
+This integral simplifies as the system is symmetric about the y-axis. So, $\bar{x} = 0$, and similarly,
+
+
+\[
+\bar{y} = \frac{1}{2.2\rho} \int_{-0.1}^{1} \int_{0}^{1} \int_{4y}^{4} y \, dz \, dy \, dx
+\]
+
+
+\]
+
+
+\]
+
+
+\]
+
+
+
+\section*{Problem 18: Moment of Inertia of a Solid Sphere}
+Find the moment of inertia of a solid sphere \(W\) of uniform density and radius \(a\) about the z-axis.
+
+\subsection*{Solution}
+The moment of inertia \(I_z\) about the z-axis is given by:
+
+
+\[
+I_z = \int \int \int_{W} (x^2 + y^2) \, \rho \, dV
+\]
+
+
+
+Converting to spherical coordinates:
+
+
+\[
+x = r \sin \theta \cos \phi, \quad y = r \sin \theta \sin \phi, \quad z = r \cos \theta
+\]
+
+
+
+The integral becomes:
+
+
+\[
+I_z = \rho \int_{0}^{a} \int_{0}^{\pi} \int_{0}^{2\pi} (r^2 \sin^2 \theta \cos^2 \phi + r^2 \sin^2 \theta \sin^2 \phi) r^2 \sin \theta \, d\phi \, d\theta \, dr
+\]
+
+
+
+
+\[
+I_z = \rho \int_{0}^{a} r^4 \, dr \int_{0}^{\pi} \sin^3 \theta \, d\theta \int_{0}^{2\pi} (\cos^2 \phi + \sin^2 \phi) \, d\phi
+\]
+
+
+
+Since \(\cos^2 \phi + \sin^2 \phi = 1\):
+
+
+\[
+I_z = \rho \int_{0}^{a} r^4 \, dr \int_{0}^{\pi} \sin^3 \theta \, d\theta \int_{0}^{2\pi} 1 \, d\phi
+\]
+
+
+
+Evaluating these integrals:
+
+
+\[
+\int_{0}^{2\pi} d\phi = 2\pi
+\]
+
+
+
+
+\[
+\int_{0}^{\pi} \sin^3 \theta \, d\theta = \frac{4}{3}
+\]
+
+
+
+
+\[
+\int_{0}^{a} r^4 \, dr = \frac{a^5}{5}
+\]
+
+
+
+Combining these results:
+
+
+\[
+I_z = \rho \cdot \frac{a^5}{5} \cdot \frac{4}{3} \cdot 2\pi = \frac{8}{15} \pi \rho a^5
+\]
+
+
+
+If the sphere has total mass \(M\), \(\rho = \frac{3M}{4\pi a^3}\), then:
+
+
+\[
+I_z = \frac{8}{15} \pi \left( \frac{3M}{4\pi a^3} \right) a^5 = \frac{2}{5} Ma^2
+\]
+
+
+
+\section*{Problem 19: Centroid of a Solid Object}
+Find the center of gravity (centroid) of a solid object bounded by the paraboloid \(z = x^2 + y^2\) and the plane \(z = 4\) using triple integration.
+
+\subsection*{Solution}
+The centroid \((\bar{x}, \bar{y}, \bar{z})\) is given by:
+
+
+\[
+\bar{x} = \frac{1}{M} \int \int \int_{V} x \, dV, \quad \bar{y} = \frac{1}{M} \int \int \int_{V} y \, dV, \quad \bar{z} = \frac{1}{M} \int \int \int_{V} z \, dV
+\]
+
+
+where \(M\) is the total mass:
+
+
+\[
+M = \int \int \int_{V} \rho \, dV
+\]
+
+
+
+Given that the density \(\rho\) is constant, we can take \(\rho\) out of the integrals:
+
+
+\[
+M = \rho \int \int \int_{V} dV
+\]
+
+
+
+In cylindrical coordinates \((r, \theta, z)\), the volume element is \(dV = r \, dr \, d\theta \, dz\). The bounds are:
+
+
+\[
+0 \leq r \leq 2, \quad 0 \leq \theta \leq 2\pi, \quad r^2 \leq z \leq 4
+\]
+
+
+
+The total mass is:
+
+
+\[
+M = \rho \int_{0}^{2\pi} \int_{0}^{2} \int_{r^2}^{4} r \, dz \, dr \, d\theta
+\]
+
+
+
+
+\[
+M = \rho \int_{0}^{2\pi} \int_{0}^{2} r (4 - r^2) \, dr \, d\theta
+\]
+
+
+
+
+\[
+M = \rho \int_{0}^{2\pi} \int_{0}^{2} (4r - r^3) \, dr \, d\theta
+\]
+
+
+
+
+\[
+M = \rho \int_{0}^{2\pi} \left[ 2r^2 - \frac{r^4}{4} \right]_0^2 \, d\theta
+\]
+
+
+
+
+\[
+M = \rho \int_{0}^{2\pi} \left( 8 - 4 \right) \, d\theta
+\]
+
+
+
+
+\[
+M = \rho \int_{0}^{2\pi} 4 \, d\theta
+\]
+
+
+
+
+\[
+M = 4\rho \cdot 2\pi = 8\pi\rho
+\]
+
+
+
+For \(\bar{x}\) and \(\bar{y}\):
+
+
+\[
+\bar{x} = \frac{1}{M} \int_{0}^{2\pi} \int_{0}^{2} \int_{r^2}^{4} x r \, dz \, dr \, d\theta = 0 \quad (\text{symmetry})
+\]
+
+
+
+
+\[
+\bar{y} = \frac{1}{M} \int_{0}^{2\pi} \int_{0}^{2} \int_{r^2}^{4} y r \, dz \, dr \, d\theta = 0 \quad (\text{symmetry})
+\]
+
+
+
+For \(\bar{z}\):
+
+
+\[
+\bar{z} = \frac{1}{M} \int_{0}^{2\pi} \int_{0}^{2} \int_{r^2}^{4} z r \, dz \, dr \, d\theta
+\]
+
+
+
+
+\[
+\bar{z} = \frac{1}{8\pi\rho} \int_{0}^{2\pi} \int_{0}^{2} \left[ \frac{z^2}{2} \right]_{r^2}^{4} r \, dr \, d\theta
+\]
+
+
+
+
+\[
+\bar{z} = \frac{1}{8\pi\rho} \int_{0}^{2\pi} \int_{0}^{2} \left( 8r - \frac{r^5}{2} \right) \, dr \, d\theta
+\]
+
+
+
+
+\[
+\bar{z} = \frac{1}{8\pi\rho} \int_{0}^{2\pi} \left[ 4r^2 - \frac{r^6}{12} \right]_0^2 \, d\theta
+\]
+
+
+\]
+
+
+\]
+
+
+\]
+
+
+\]
+
+
+\]
+
+\section*{Problem 20 : Mass of a Solid Hemisphere}
+Find the mass of a solid hemisphere of radius \( R \) with a density function \( \rho(x, y, z) = kz \), where \( k \) is a constant. The hemisphere is located above the \( xy \)-plane (i.e., \( z \geq 0 \)).
+
+\subsection*{Solution}
+The mass \( M \) of the hemisphere can be found using the triple integral:
+
+
+\[
+M = \int \int \int_{V} \rho(x, y, z) \, dV
+\]
+
+
+Given the density function \( \rho(x, y, z) = kz \), we have:
+
+
+\[
+M = k \int \int \int_{V} z \, dV
+\]
+
+
+
+In spherical coordinates \((r, \theta, \phi)\), the volume element is \( dV = r^2 \sin \phi \, dr \, d\theta \, d\phi \). The bounds are:
+
+
+\[
+0 \leq r \leq R, \quad 0 \leq \theta \leq 2\pi, \quad 0 \leq \phi \leq \frac{\pi}{2}
+\]
+
+
+
+Converting to spherical coordinates, \( z = r \cos \phi \):
+
+
+\[
+M = k \int_{0}^{2\pi} \int_{0}^{\frac{\pi}{2}} \int_{0}^{R} r \cos \phi \cdot r^2 \sin \phi \, dr \, d\phi \, d\theta
+\]
+
+
+
+Simplifying the integrals:
+
+
+\[
+M = k \int_{0}^{2\pi} d\theta \int_{0}^{\frac{\pi}{2}} \cos \phi \sin \phi \, d\phi \int_{0}^{R} r^3 \, dr
+\]
+
+
+
+
+\[
+M = k \cdot 2\pi \int_{0}^{\frac{\pi}{2}} \cos \phi \sin \phi \, d\phi \int_{0}^{R} r^3 \, dr
+\]
+
+
+
+Evaluating the integral with respect to \( r \):
+
+
+\[
+\int_{0}^{R} r^3 \, dr = \left[ \frac{r^4}{4} \right]_{0}^{R} = \frac{R^4}{4}
+\]
+
+
+
+Evaluating the integral with respect to \( \phi \):
+
+
+\[
+\int_{0}^{\frac{\pi}{2}} \cos \phi \sin \phi \, d\phi = \int_{0}^{\frac{\pi}{2}} \frac{1}{2} \sin 2\phi \, d\phi = \frac{1}{2} \left[ -\frac{1}{2} \cos 2\phi \right]_{0}^{\frac{\pi}{2}} = \frac{1}{2} \left( 0 - (-\frac{1}{2}) \right) = \frac{1}{4}
+\]
+
+
+
+Combining the results:
+
+
+\[
+M = k \cdot 2\pi \cdot \frac{1}{4} \cdot \frac{R^4}{4}
+\]
+
+
+
+
+\[
+M = \frac{k \pi R^4}{4}
+\]
+
+
+\section*{Problem 21 : Triple Integral with Transformation}
+Evaluate the triple integral
+
+
+\[
+\iiint_{T} x y z \, dx \, dy \, dz
+\]
+
+
+where \( T \) is the region in the \( xyz \)-space bounded by the planes \( x = 0 \), \( y = 0 \), \( z = 0 \), \( x + y = 1 \), and \( z = x + y \). Use the transformation \( u = x + y \), \( v = x - y \), and \( w = z \).
+
+\subsection*{Solution}
+First, we compute the Jacobian determinant of the transformation \( (x, y, z) \rightarrow (u, v, w) \):
+
+
+
+\[
+\begin{aligned}
+u &= x + y, \\
+v &= x - y, \\
+w &= z.
+\end{aligned}
+\]
+
+
+
+The Jacobian determinant \( J \) is given by:
+
+
+
+\[
+J = \begin{vmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w} \\
+\frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
+\end{vmatrix}
+= \begin{vmatrix}
+\frac{1}{2} & \frac{1}{2} & 0 \\
+\frac{1}{2} & -\frac{1}{2} & 0 \\
+0 & 0 & 1
+\end{vmatrix}
+= 1 \cdot \left( -\frac{1}{2} \cdot 1 \right) - 0 + 0 = -\frac{1}{2}
+\]
+
+
+
+Thus, the absolute value of the Jacobian determinant is:
+
+
+
+\[
+|J| = \left| -\frac{1}{2} \right| = \frac{1}{2}
+\]
+
+
+
+Next, we transform the region \( T \) and the integrand \( x y z \) in terms of \( u \), \( v \), and \( w \):
+
+
+
+\[
+x = \frac{u+v}{2}, \quad y = \frac{u-v}{2}, \quad z = w
+\]
+
+
+
+Therefore, the integrand becomes:
+
+
+
+\[
+x y z = \left( \frac{u+v}{2} \right) \left( \frac{u-v}{2} \right) w = \frac{(u^2 - v^2)w}{4}
+\]
+
+
+
+The bounds for \( u \), \( v \), and \( w \) are:
+
+
+
+\[
+0 \leq u \leq 1, \quad -u \leq v \leq u, \quad 0 \leq w \leq u
+\]
+
+
+
+Now, the triple integral in terms of \( u \), \( v \), and \( w \) is:
+
+
+
+\[
+\iiint_{T} x y z \, dx \, dy \, dz = \iiint_{T} \frac{(u^2 - v^2)w}{4} \cdot \frac{1}{2} \, du \, dv \, dw = \frac{1}{8} \iiint_{T} (u^2 - v^2) w \, du \, dv \, dw
+\]
+
+
+
+Evaluate the integral:
+
+
+
+\[
+\frac{1}{8} \int_{0}^{1} \int_{-u}^{u} \int_{0}^{u} (u^2 - v^2) w \, dw \, dv \, du
+\]
+
+
+
+Integrate with respect to \( w \):
+
+
+
+\[
+\int_{0}^{u} (u^2 - v^2) w \, dw = \left[ \frac{(u^2 - v^2) w^2}{2} \right]_{0}^{u} = \frac{(u^2 - v^2) u^2}{2} = \frac{u^4 - u^2 v^2}{2}
+\]
+
+
+
+Integrate with respect to \( v \):
+
+
+
+\[
+\int_{-u}^{u} \frac{u^4 - u^2 v^2}{2} \, dv = \frac{u^4}{2} \int_{-u}^{u} dv - \frac{u^2}{2} \int_{-u}^{u} v^2 \, dv
+\]
+
+
+
+
+\[
+= \frac{u^4}{2} \left[ v \right]_{-u}^{u} - \frac{u^2}{2} \left[ \frac{v^3}{3} \right]_{-u}^{u} = \frac{u^4}{2} \cdot 2u - \frac{u^2}{2} \cdot \frac{2u^3}{3} = u^5 - \frac{2u^5}{3} = \frac{3u^5 - 2u^5}{3} = \frac{u^5}{3}
+\]
+
+
+
+Integrate with respect to \( u \):
+
+
+
+\[
+\frac{1}{8} \int_{0}^{1} \frac{u^5}{3} \, du = \frac{1}{24} \left[ \frac{u^6}{6} \right]_{0}^{1} = \frac{1}{24} \cdot \frac{1}{6} = \frac{1}{144}
+\]
+
+
+
+Thus, the value of the triple integral is:
+
+
+
+\[
+\iiint_{T} x y z \, dx \, dy \, dz = \frac{1}{144}
+\]
+
+
+
+\section*{Problem: Mass of the Solid Bounded by the Curves}
+Find the mass of the solid obtained by the curves \( y = x^2 \) and \( y = x + 2 \) with a constant density over the given area.
+
+\subsection*{Solution}
+First, find the points of intersection of the curves:
+
+
+\[
+x^2 = x + 2 \implies x^2 - x - 2 = 0 \implies (x - 2)(x + 1) = 0 \implies x = 2, \, x = -1
+\]
+
+
+
+The mass \( M \) of the solid is given by:
+
+
+\[
+M = \rho \int_{-1}^{2} \int_{x^2}^{x+2} \, dy \, dx
+\]
+
+
+
+Evaluate the integral:
+
+
+\[
+M = \rho \int_{-1}^{2} \left[ y \right]_{x^2}^{x+2} \, dx = \rho \int_{-1}^{2} \left( (x+2) - x^2 \right) \, dx
+\]
+
+
+
+
+\[
+M = \rho \int_{-1}^{2} (x + 2 - x^2) \, dx
+\]
+
+
+
+Integrate with respect to \( x \):
+
+
+\[
+M = \rho \left[ \frac{x^2}{2} + 2x - \frac{x^3}{3} \right]_{-1}^{2}
+\]
+
+
+
+Evaluate the definite integral:
+
+
+\[
+M = \rho \left( \left( \frac{2^2}{2} + 2(2) - \frac{2^3}{3} \right) - \left( \frac{(-1)^2}{2} + 2(-1) - \frac{(-1)^3}{3} \right) \right)
+\]
+
+
+
+
+\[
+M = \rho \left( \left( 2 + 4 - \frac{8}{3} \right) - \left( \frac{1}{2} - 2 + \frac{1}{3} \right) \right)
+\]
+
+
+
+
+\[
+M = \rho \left( 6 - \frac{8}{3} - \frac{1}{2} + 2 - \frac{1}{3} \right)
+\]
+
+
+
+
+\[
+M = \rho \left( \frac{18}{3} - \frac{8}{3} + \frac{6}{3} - \frac{1}{2} \right)
+\]
+
+
+
+
+\[
+M = \rho \left( \frac{18 - 8 + 6}{3} - \frac{1}{2} \right)
+\]
+
+
+\]
+
+
+\]
+
+
+\]
+
+
+\]
+
+
+\]
+
+
+
+\section*{Problem: Mass of the Solid Bounded by the Curves}
+Find the mass of the solid obtained by the curves \( y = x^2 \) and \( y = x + 2 \) with a constant density over the given area.
+
+\subsection*{Solution}
+The mass \( M \) of the solid is given by:
+
+
+\[
+M = \rho \int_{0}^{3} \int_{y-2}^{\sqrt{y}} \, dx \, dy
+\]
+
+
+
+Evaluate the integral:
+
+
+\[
+M = \rho \int_{0}^{3} \left[ x \right]_{y-2}^{\sqrt{y}} \, dy = \rho \int_{0}^{3} \left( \sqrt{y} - (y - 2) \right) \, dy = \rho \int_{0}^{3} (2 - y + \sqrt{y}) \, dy
+\]
+
+
+
+Integrate with respect to \( y \):
+
+
+\[
+M = \rho \left[ 2y - \frac{y^2}{2} + \frac{2}{3}y^{3/2} \right]_{0}^{3}
+\]
+
+
+
+Evaluate the definite integral:
+
+
+\[
+M = \rho \left( \left( 2(3) - \frac{3^2}{2} + \frac{2}{3} \cdot 3^{3/2} \right) - \left( 2(0) - \frac{0^2}{2} + \frac{2}{3} \cdot 0^{3/2} \right) \right)
+\]
+
+
+
+
+\[
+M = \rho \left( 6 - \frac{9}{2} + \frac{2}{3} \cdot \sqrt{27} \right)
+\]
+
+
+
+
+\[
+M = \rho \left( 6 - \frac{9}{2} + \frac{2}{3} \cdot 3\sqrt{3} \right)
+\]
+
+
+
+
+\[
+M = \rho \left( 6 - \frac{9}{2} + 2\sqrt{3} \right)
+\]
+
+
+\]
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
