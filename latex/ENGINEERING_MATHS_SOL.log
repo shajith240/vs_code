@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2024.10.22)  2 NOV 2024 20:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2024.10.22)  2 NOV 2024 20:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -146,7 +146,7 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 \l__pdf_internal_box=\box54
 )
-No file ENGINEERING_MATHS_SOL.aux.
+(./ENGINEERING_MATHS_SOL.aux)
 \openout1 = `ENGINEERING_MATHS_SOL.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
@@ -163,6 +163,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -997,44 +998,6 @@ l.2453 \]
          
 ? 
 
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2517 \]
-         
-? 
-
-! LaTeX Error: \begin{document} ended by \end{equation*}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2517 \]
-         
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.2517 \]
-         
-? 
-! Display math should end with $$.
-<to be read again> 
-                   \endgroup 
-l.2517 \]
-         
-? 
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.2517 \]
-         
-? 
-
 
 [25] (./ENGINEERING_MATHS_SOL.aux)
  ***********
@@ -1043,10 +1006,10 @@ L3 programming layer <2024-08-16>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2486 strings out of 473579
- 35728 string characters out of 5730778
+ 2489 strings out of 473579
+ 35818 string characters out of 5730778
  1947957 words of memory out of 5000000
- 25398 multiletter control sequences out of 15000+600000
+ 25399 multiletter control sequences out of 15000+600000
  565932 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,12n,65p,301b,259s stack positions out of 10000i,1000n,20000p,200000b,200000s
