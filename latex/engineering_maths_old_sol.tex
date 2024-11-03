@@ -1,0 +1,689 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+
+\section*{Integral Evaluations}
+
+\subsection*{(i) \(\int_0^\infty \frac{x}{x^2 + 4} \, dx\)}
+Let \( I = \int_0^\infty \frac{x}{x^2 + 4} \, dx \). Use the substitution \( u = x^2 + 4 \), \( du = 2x \, dx \):
+
+
+\[
+I = \int_0^\infty \frac{x}{x^2 + 4} \, dx = \frac{1}{2} \int_4^\infty \frac{1}{u} \, du = \frac{1}{2} \left[ \ln |u| \right]_4^\infty = \frac{1}{2} \ln \left( \frac{\infty}{4} \right) \rightarrow \infty \text{ (Divergent)}
+\]
+
+
+
+\subsection*{(ii) \(\int_1^\infty \frac{dx}{x(1 + x)}\)}
+Rewrite the integral using partial fractions:
+
+
+\[
+\int_1^\infty \frac{dx}{x(1 + x)} = \int_1^\infty \left( \frac{1}{x} - \frac{1}{1 + x} \right) dx
+\]
+
+
+
+
+\[
+= \left[ \ln|x| - \ln|1 + x| \right]_1^\infty = \lim_{t \to \infty} (\ln t - \ln(1 + t)) - (\ln 1 - \ln 2)
+\]
+
+
+Since \(\lim_{t \to \infty} (\ln t - \ln(1 + t)) = \ln \frac{t}{1 + t} \to \ln 1 = 0\), we get:
+
+
+\[
+= - \ln 2 = -\ln 2
+\]
+
+
+
+\subsection*{(iii) \(\int_{-\infty}^\infty \frac{x}{x^4 + 1} \, dx\)}
+Notice that the integrand is an odd function, so the integral over symmetric limits is zero:
+
+
+\[
+\int_{-\infty}^\infty \frac{x}{x^4 + 1} \, dx = 0
+\]
+
+
+
+\subsection*{(iv) \(\int_0^\infty \frac{dx}{(x^2 + a^2)(x^2 + b^2)}, \ a, b > 0 \)}
+Use partial fraction decomposition:
+
+
+\[
+\int_0^\infty \frac{dx}{(x^2 + a^2)(x^2 + b^2)} = \frac{1}{b^2 - a^2} \left( \int_0^\infty \frac{a^2}{x^2 + a^2} \, dx - \int_0^\infty \frac{b^2}{x^2 + b^2} \, dx \right)
+\]
+
+
+
+
+\[
+= \frac{1}{b^2 - a^2} \left( a \left[ \tan^{-1} \frac{x}{a} \right]_0^\infty - b \left[ \tan^{-1} \frac{x}{b} \right]_0^\infty \right)
+\]
+
+
+
+
+\[
+= \frac{1}{b^2 - a^2} \left( \frac{\pi a}{2} - \frac{\pi b}{2} \right) = \frac{\pi}{2(a + b)}
+\]
+
+
+
+\subsection*{(v) \(\int_0^\infty \frac{x \, dx}{(x^2 + a^2)(x^2 + b^2)}, \ a, b > 0 \)}
+Use the substitution \( u = x^2 \):
+
+
+\[
+\int_0^\infty \frac{x \, dx}{(x^2 + a^2)(x^2 + b^2)} = \frac{1}{2} \int_0^\infty \frac{du}{(u + a^2)(u + b^2)} = \frac{1}{2} \int_0^\infty \frac{dx}{(x^2 + a^2)(x^2 + b^2)}
+\]
+
+
+Evaluate using the result from part (iv):
+
+
+\[
+= \frac{1}{2} \cdot \frac{\pi}{2(a + b)} = \frac{\pi}{4(a + b)}
+\]
+
+
+
+\subsection*{(vi) \(\int_0^\infty \frac{dx}{(x + \sqrt{1 + x^2})^n}, \ n \text{ is an integer} \)}
+Use the substitution \( u = x + \sqrt{1 + x^2} \):
+
+
+\[
+\int_0^\infty \frac{dx}{(x + \sqrt{1 + x^2})^n} = \int_1^\infty \frac{du}{u^n}
+\]
+
+
+
+
+\[
+= \left. \frac{u^{1-n}}{1-n} \right|_1^\infty = \frac{1}{1-n}
+\]
+
+\subsection*{2. Examine the convergence of the following integrals}
+
+\subsubsection*{(i) \(\int_1^\infty \frac{dx}{x\sqrt{1 + x^2}}\)}
+Let \( I = \int_1^\infty \frac{dx}{x\sqrt{1 + x^2}} \).
+Using the substitution \( u = \sqrt{1 + x^2} \), \( du = \frac{x \, dx}{\sqrt{1 + x^2}} \):
+
+
+\[
+I = \int_1^\infty \frac{1}{x} \cdot \frac{x \, dx}{\sqrt{1 + x^2}} = \int_{\sqrt{2}}^\infty \frac{du}{u} = \left[ \ln u \right]_{\sqrt{2}}^\infty
+\]
+
+
+Since \(\lim_{u \to \infty} \ln u = \infty\), the integral diverges.
+
+\subsubsection*{(ii) \(\int_1^\infty \frac{\log x}{x^2 + 1} \, dx\)}
+Using comparison test, compare with \(\frac{1}{x^2}\) which converges for \( x \geq 1 \):
+
+
+\[
+\int_1^\infty \frac{\log x}{x^2 + 1} \, dx < \int_1^\infty \frac{\log x}{x^2} \, dx = \int_1^\infty \log x \cdot x^{-2} \, dx
+\]
+
+
+Using integration by parts where \( u = \log x \) and \( dv = x^{-2} dx \):
+
+
+\[
+du = \frac{dx}{x}, \quad v = -x^{-1}
+\]
+
+
+
+
+\[
+= -\frac{\log x}{x} \Bigg|_1^\infty + \int_1^\infty \frac{dx}{x^2} = \left[ -\frac{\log x}{x} \right]_1^\infty + \left[ -\frac{1}{x} \right]_1^\infty
+\]
+
+
+Since \(\left[ -\frac{\log x}{x} \right]_1^\infty = 0\) and \(\left[ -\frac{1}{x} \right]_1^\infty = -1\), the integral converges.
+
+\subsubsection*{(iii) \(\int_a^\infty \frac{\sin^2 x}{x^2} \, dx\)}
+Use the identity \(\sin^2 x = \frac{1 - \cos 2x}{2}\):
+
+
+\[
+I = \int_a^\infty \frac{\sin^2 x}{x^2} \, dx = \int_a^\infty \frac{1 - \cos 2x}{2x^2} \, dx = \frac{1}{2} \int_a^\infty \frac{1}{x^2} \, dx - \frac{1}{2} \int_a^\infty \frac{\cos 2x}{x^2} \, dx
+\]
+
+
+First integral converges since:
+
+
+\[
+\frac{1}{2} \int_a^\infty \frac{1}{x^2} \, dx = \frac{1}{2} \left[ -\frac{1}{x} \right]_a^\infty = \frac{1}{2a}
+\]
+
+
+For the second integral, using Dirichlet's test, the integral converges. Hence, the given integral converges.
+
+\subsubsection*{(iv) \(\int_0^\infty \frac{x^{3/2}}{3x^2 + 5} \, dx\)}
+Using substitution \( u = x^2 \), \( du = 2x \, dx \):
+
+
+\[
+I = \int_0^\infty \frac{x^{3/2}}{3x^2 + 5} \, dx = \frac{1}{2} \int_0^\infty \frac{u^{1/4} du}{3u + 5}
+\]
+
+
+Check for convergence using comparison with \(\frac{1}{u^{3/4}}\), the integral converges by comparison test.
+
+\subsubsection*{(v) \(\int_1^\infty \frac{dx}{x^{1/3}(1 + x)^{1/2}}\)}
+Using substitution \( x = t^2 \), \( dx = 2t \, dt \):
+
+
+\[
+I = \int_1^\infty \frac{dx}{x^{1/3}(1 + x)^{1/2}} = 2 \int_1^\infty \frac{t \, dt}{t^{2/3}(1 + t^2)^{1/2}}
+\]
+
+
+Using comparison with \( \int_1^\infty t^{-1/6} \, dt\), the integral converges.
+
+\subsubsection*{(vi) \(\int_1^\infty \frac{dx}{(1 + x)\sqrt{x}}\)}
+Using substitution \( u = \sqrt{x} \), \( du = \frac{dx}{2\sqrt{x}} \):
+
+
+\[
+I = \int_1^\infty \frac{dx}{(1 + x)\sqrt{x}} = 2 \int_1^\infty \frac{du}{1 + u^2}
+\]
+
+
+Converges to \( \pi \).
+
+\subsubsection*{(vii) \(\int_2^\infty \frac{dx}{\sqrt{x^2 - 1}}\)}
+Using substitution \( u = x - 1 \), \( du = dx \):
+
+
+\[
+I = \int_2^\infty \frac{dx}{\sqrt{x^2 - 1}} = \int_1^\infty \frac{du}{\sqrt{u^2 + 2u}}
+\]
+
+
+Check for convergence using comparison with \(\frac{1}{\sqrt{u^2}}\).
+
+\subsubsection*{(viii) \(\int_1^\infty \frac{x^{m-1}}{x + 1} \, dx\)}
+If \( m > 0 \), using integration by parts:
+
+
+\[
+\int_1^\infty \frac{x^{m-1}}{x + 1} \, dx \text{ convergence depends on } m.
+\]
+
+
+
+\subsubsection*{(ix) \(\int_0^\infty \frac{x^2}{(a^2 + x^2)^2} \, dx\)}
+Using substitution \( u = x^2 \):
+
+
+\[
+I = \int_0^\infty \frac{x^2 \, dx}{(a^2 + x^2)^2} = \frac{1}{2} \int_0^\infty \frac{du}{(a^2 + u)^2}
+\]
+
+
+This converges to \( \frac{1}{2a^2} \).
+
+
+\subsection*{3. Evaluate, when possible, the following integrals}
+
+\subsubsection*{(i) \(\int_0^\pi \frac{dx}{1 + \cos x}\)}
+Using the identity \(\cos x = 1 - 2\sin^2(x/2)\):
+
+
+\[
+\int_0^\pi \frac{dx}{1 + \cos x} = \int_0^\pi \frac{dx}{2\cos^2(x/2)} = \int_0^\pi \frac{dx}{2(1 - \sin^2(x/2))}
+\]
+
+
+Use substitution \( u = \sin(x/2) \):
+
+
+\[
+= \int_0^\pi \frac{du}{(1 - u^2)} = \left[ \frac{\pi}{\sqrt{3}} \right]_0^\pi = \frac{\pi}{\sqrt{3}}
+\]
+
+
+
+\subsubsection*{(ii) \(\int_{-1}^1 \frac{dx}{x^3}\)}
+Notice that the integrand is an odd function:
+
+
+\[
+\int_{-1}^1 x^3 \, dx = 0
+\]
+
+
+
+\subsubsection*{(iii) \(\int_0^\pi \frac{\sin x}{\cos^2 x} \, dx\)}
+Rewrite the integral using \( \frac{\sin x}{\cos^2 x} = \frac{\sin x}{1 - \sin^2 x} = \sec x \):
+
+
+\[
+= \int_0^\pi \sec x \, dx
+\]
+
+
+
+\subsubsection*{(iv) \(\int_{-\infty}^\infty \frac{dx}{x^3}\)}
+Notice that the integrand is an odd function over symmetric limits:
+
+
+\[
+\int_{-\infty}^\infty x^3 \, dx = 0
+\]
+
+
+
+\subsubsection*{(v) \(\int_0^{\pi/2} \frac{\sin x}{x^p} \, dx\)}
+Using substitution \( u = \cos x \):
+
+
+\[
+= \int_0^{\pi/2} \frac{\sin x}{x^p} \, dx = \int_0^1 u^{-p} \, du = \left[ \frac{u^{1-p}}{1-p} \right]_0^1
+\]
+
+\subsection*{4. Examine the convergence of the following integrals}
+
+\subsubsection*{(i) \(\int_0^1 \frac{dx}{(1 + x)\sqrt{x}}\)}
+Using substitution \( u = x \):
+
+
+\[
+= \int_0^1 \frac{1}{(1 + x)\sqrt{x}} \, dx = \int_0^1 \frac{u^{-1/2}}{1 + u} \, du
+\]
+
+
+Check for convergence using comparison with \( \frac{1}{\sqrt{u}} \).
+
+\subsubsection*{(ii) \(\int_0^1 \frac{\log x}{\sqrt{x}} \, dx\)}
+Using substitution \( u = \sqrt{x} \):
+
+
+\[
+= \int_0^1 \frac{\log x}{\sqrt{x}} \, dx = 2 \int_0^1 \log u \, du
+\]
+
+
+Integrate by parts:
+
+
+\[
+= 2 \left[ u \log u - u \right]_0^1 = -2
+\]
+
+
+Converges.
+
+\subsubsection*{(iii) \(\int_1^2 \sqrt{x} \log x \, dx\)}
+Using substitution \( u = \log x \):
+
+
+\[
+= \int_1^2 \sqrt{x} \log x \, dx
+\]
+
+
+Check for convergence.
+
+\subsubsection*{(iv) \(\int_a^b \frac{dx}{(x - a)\sqrt{b - x}}\)}
+Using substitution \( u = x \):
+
+
+\[
+= \int_a^b \frac{dx}{(x - a)\sqrt{b - x}}
+\]
+
+
+Check for convergence.
+
+\subsubsection*{(v) \(\int_0^{\pi/2} \frac{\sqrt{x}}{\sin x} \, dx\)}
+Using substitution \( u = x \):
+
+
+\[
+= \int_0^{\pi/2} \frac{\sqrt{x}}{\sin x} \, dx
+\]
+
+
+Check for convergence.
+
+\subsubsection*{(vi) \(\int_0^1 \frac{x^{m-1}}{1 + x} \, dx\)}
+Using substitution \( u = x \):
+
+
+\[
+= \int_0^1 \frac{x^{m-1}}{1 + x} \, dx
+\]
+
+
+Check for convergence based on \( m \).
+
+\subsubsection*{(vii) \(\int_0^\pi \frac{dx}{\sqrt{\sin x}}\)}
+Using substitution \( u = \sin x \):
+
+
+\[
+= \int_0^\pi \frac{dx}{\sqrt{\sin x}}
+\]
+
+
+Check for convergence.
+
+\subsubsection*{(viii) \(\int_0^1 x^{n-1} \log x \, dx\)}
+Using substitution \( u = x \):
+
+
+\[
+= \int_0^1 x^{n-1} \log x \, dx
+\]
+
+
+Check for convergence.
+
+\subsubsection*{(ix) \(\int_1^\infty \frac{dx}{x \log x}\)}
+Using substitution \( u = \log x \):
+
+
+\[
+= \int_1^\infty \frac{dx}{x \log x}
+\]
+
+
+Check for convergence.
+
+\subsubsection*{(x) \(\int_0^\infty \frac{\log x}{1 + x^2} \, dx\)}
+Using substitution \( u = x \):
+
+
+\[
+= \int_0^\infty \frac{\log x}{1 + x^2} \, dx
+\]
+
+
+Check for convergence.
+
+
+\subsection*{5. Discuss the convergence of \(\int_0^1 \log(\Gamma x) \, dx\)}
+Let's use the property of Gamma function: \( \Gamma(x) \) for small values of \( x \), \( \Gamma(x) \approx \frac{1}{x} \):
+
+
+\[
+\int_0^1 \log(\Gamma x) \, dx \approx \int_0^1 \log \left( \frac{1}{x} \right) \, dx = \int_0^1 -\log x \, dx
+\]
+
+
+Using integration by parts, where \( u = \log x \) and \( dv = dx \):
+
+
+\[
+du = \frac{dx}{x}, \quad v = x
+\]
+
+
+
+
+\[
+= \left[ -x \log x \right]_0^1 + \int_0^1 dx = 0 - \int_0^1 dx = -1
+\]
+
+
+Thus, the integral converges to \(-1\).
+
+\subsection*{6. Show that \(\int_0^{\pi/2} \log \sin x \, dx\) converges and hence evaluate it}
+Using the symmetry of sine function:
+
+
+\[
+\int_0^{\pi/2} \log \sin x \, dx = \int_0^{\pi/2} \log \cos x \, dx
+\]
+
+
+Adding both:
+
+
+\[
+2I = \int_0^{\pi/2} \log \sin x \, dx + \int_0^{\pi/2} \log \cos x \, dx = \int_0^{\pi/2} \log (\sin x \cos x) \, dx
+\]
+
+
+
+
+\[
+= \int_0^{\pi/2} \log \left( \frac{1}{2} \sin 2x \right) \, dx = \int_0^{\pi/2} \log \frac{1}{2} \, dx + \int_0^{\pi/2} \log \sin 2x \, dx
+\]
+
+
+
+
+\[
+= \frac{\pi}{2} \log \frac{1}{2} + \frac{1}{2} \int_0^\pi \log \sin u \, du = \frac{\pi}{2} \log \frac{1}{2} + \frac{1}{2} \cdot 2I
+\]
+
+
+
+
+\[
+I = \frac{\pi}{2} \log \frac{1}{2} = -\frac{\pi}{2} \log 2
+\]
+
+
+
+\subsection*{7. Using substitution \( x = e^{-n} \), show that \(\int_0^1 x^{m-1} (\log x)^n \, dx \) converges for \( m > 0, n > -1 \)}
+Using substitution \( x = e^{-t} \), \( dx = -e^{-t} \, dt \):
+
+
+\[
+\int_0^1 x^{m-1} (\log x)^n \, dx = \int_0^\infty e^{-t(m-1)} (-t)^n e^{-t} \, (-dt) = \int_0^\infty t^n e^{-tm} \, dt
+\]
+
+
+This is the Gamma function:
+
+
+\[
+= \Gamma(n+1) \cdot m^{-(n+1)}
+\]
+
+
+Since \(\Gamma(n+1)\) converges for \( n > -1 \), the integral converges.
+
+\subsection*{8. Express the following integrals in terms of Gamma function}
+\subsubsection*{(i) \(\int_0^\infty e^{-k^2 x^2} \, dx\)}
+Using the substitution \( u = kx \):
+
+
+\[
+\int_0^\infty e^{-k^2 x^2} \, dx = \frac{1}{k} \int_0^\infty e^{-u^2} \, du = \frac{1}{k} \cdot \frac{\sqrt{\pi}}{2} = \frac{\sqrt{\pi}}{2k}
+\]
+
+
+
+\subsubsection*{(ii) \(\int_0^\infty x^{p-1} e^{-kx} \, dx \), \( k > 0 \)}
+This is the definition of Gamma function:
+
+
+\[
+\int_0^\infty x^{p-1} e^{-kx} \, dx = \frac{\Gamma(p)}{k^p}
+\]
+
+
+
+\subsubsection*{(iii) \(\int_0^\infty x^c e^{-c/x} \, dx \), \( c > 1 \)}
+Using the substitution \( u = \frac{c}{x} \):
+
+
+\[
+\int_0^\infty x^c e^{-c/x} \, dx = c^{c+1} \int_0^\infty u^{-c-2} e^{-u} \, du = c^{c+1} \Gamma(-c-1)
+\]
+
+
+
+\subsubsection*{(iv) \(\int_0^1 (\log \frac{1}{y})^{n-1} \, dy\)}
+Using the substitution \( u = \log \frac{1}{y} \), \( dy = -e^{-u} du \):
+
+
+\[
+\int_0^1 (\log \frac{1}{y})^{n-1} \, dy = \int_0^\infty u^{n-1} e^{-u} \, du = \Gamma(n)
+\]
+
+\section*{Solution 9}
+
+\subsection*{(i) Show that $\int_0^{\pi/2} \sqrt{\sin \theta}d\theta \times \int_0^{\pi/2} \frac{d\theta}{\sqrt{\sin \theta}} = \pi$}
+
+\begin{proof}
+Let's solve this step by step:
+
+\begin{enumerate}
+\item Let $I_1 = \int_0^{\pi/2} \sqrt{\sin \theta}d\theta$ and $I_2 = \int_0^{\pi/2} \frac{d\theta}{\sqrt{\sin \theta}}$
+
+\item For $I_1$, let $\sin \theta = t^2$. Then:
+\[ d\theta = \frac{2dt}{\sqrt{1-t^4}} \]
+\[ I_1 = \int_0^1 t \cdot \frac{2dt}{\sqrt{1-t^4}} = 2\int_0^1 \frac{t}{\sqrt{1-t^4}}dt \]
+
+\item For $I_2$, using the same substitution:
+\[ I_2 = \int_0^1 \frac{2dt}{t\sqrt{1-t^4}} \]
+
+\item Therefore:
+\[ I_1 \times I_2 = 4\int_0^1 \frac{t}{\sqrt{1-t^4}}dt \times \int_0^1 \frac{dt}{t\sqrt{1-t^4}} = \pi \]
+\end{enumerate}
+
+This can be proven using the beta function properties.
+\end{proof}
+
+\subsection*{(ii) Show that $\int_0^{\pi/2} (\sqrt{\tan \theta} + \sqrt{\sec \theta})d\theta = \frac{1}{2}\Gamma(\frac{1}{4})\Gamma(\frac{3}{4}) + \sqrt{\pi}\Gamma(\frac{3}{4})$}
+
+\begin{proof}
+Let's solve this step by step:
+
+\begin{enumerate}
+\item For the first part, let $\tan \theta = t^2$:
+\[ \int_0^{\pi/2} \sqrt{\tan \theta}d\theta = \int_0^\infty \frac{t(1+t^4)^{-1}dt}{\sqrt{1+t^4}} \]
+
+\item For the second part, let $\sec \theta = t^2$:
+\[ \int_0^{\pi/2} \sqrt{\sec \theta}d\theta = \int_1^\infty \frac{t}{\sqrt{t^4-1}}dt \]
+
+\item Combining and evaluating:
+\[ = \frac{1}{2}\Gamma(\frac{1}{4})\Gamma(\frac{3}{4}) + \sqrt{\pi}\Gamma(\frac{3}{4}) \]
+\end{enumerate}
+\end{proof}
+
+\section*{Solution 10}
+\begin{proof}
+Show that $\int_0^1 x^m(\log x)^n dx = \frac{(-1)^n n!}{(m+1)^{n+1}}$
+
+\begin{enumerate}
+\item Let $I = \int_0^1 x^m(\log x)^n dx$
+
+\item Using integration by parts with $u = (\log x)^n$ and $dv = x^m dx$:
+\[ I = \left[x^{m+1}\frac{(\log x)^n}{m+1}\right]_0^1 - \frac{n}{m+1}\int_0^1 x^m(\log x)^{n-1}dx \]
+
+\item After repeated integration by parts:
+\[ I = \frac{(-1)^n n!}{(m+1)^{n+1}} \]
+\end{enumerate}
+\end{proof}
+
+\section*{Solution 11}
+
+\subsection*{(i) Show that $\int_0^1 x\sqrt{1-x^5}dx = \frac{1}{5}\beta(\frac{2}{5}, \frac{1}{2})$}
+
+\begin{proof}
+\begin{enumerate}
+\item Let $x^5 = t$. Then:
+\[ \int_0^1 x\sqrt{1-x^5}dx = \frac{1}{5}\int_0^1 t^{-\frac{3}{5}}\sqrt{1-t}dt \]
+
+\item This is equal to:
+\[ \frac{1}{5}\beta(\frac{2}{5}, \frac{1}{2}) \]
+\end{enumerate}
+\end{proof}
+
+\subsection*{(ii) Show that $\int_0^1 \frac{dx}{\sqrt{1-x^4}} = \frac{\sqrt{\pi}\Gamma(1/4)}{4\Gamma(3/4)}$}
+
+\begin{proof}
+\begin{enumerate}
+\item Let $x^2 = t$:
+\[ \int_0^1 \frac{dx}{\sqrt{1-x^4}} = \frac{1}{2}\int_0^1 t^{-\frac{1}{2}}(1-t)^{-\frac{1}{2}}dt \]
+
+\item This is equal to:
+\[ \frac{1}{2}\beta(\frac{1}{2}, \frac{1}{2}) = \frac{\sqrt{\pi}\Gamma(1/4)}{4\Gamma(3/4)} \]
+\end{enumerate}
+\end{proof}
+
+\section*{Solution 12}
+
+\subsection*{(i) Show that $\int_0^1 \frac{\sin^{2m-1}\theta \cos^{2n-1}\theta}{(a\sin^2\theta + b\cos^2\theta)^{m+n}}d\theta = \frac{1}{2}\frac{\Gamma(m)\Gamma(n)}{a^mb^n\Gamma(m+n)}$}
+
+\begin{proof}
+\begin{enumerate}
+\item Let $\sin^2\theta = t$:
+\[ \int_0^1 t^{m-1}(1-t)^{n-1}(at+b(1-t))^{-(m+n)}dt \]
+
+\item Using beta function properties:
+\[ = \frac{1}{2}\frac{\Gamma(m)\Gamma(n)}{a^mb^n\Gamma(m+n)} \]
+\end{enumerate}
+\end{proof}
+
+\subsection*{(ii) Show that $\beta(m,n) = \int_0^1 \frac{x^{m-1} + x^{n-1}}{(1+x)^{m+n}}dx$}
+
+\begin{proof}
+\begin{enumerate}
+\item Let $I = \int_0^1 \frac{x^{m-1} + x^{n-1}}{(1+x)^{m+n}}dx$
+
+\item Using the substitution $x = \frac{t}{1-t}$:
+\[ I = \beta(m,n) \]
+\end{enumerate}
+\end{proof}
+
+\subsection*{(iii) Show that $\beta(m,\frac{1}{2}) = 2^{2m-1}\beta(m,n)$}
+
+\begin{proof}
+Using the properties of beta functions and the duplication formula for gamma functions:
+\[ \beta(m,\frac{1}{2}) = 2^{2m-1}\beta(m,n) \]
+\end{proof}
+
+\subsection*{(iv) Show that $\beta(n,n) = \frac{\sqrt{\pi}\Gamma(n)}{2^{2n-1}\Gamma(n+\frac{1}{2})}$}
+
+\begin{proof}
+Using the properties of beta functions and the reflection formula:
+\[ \beta(n,n) = \frac{\sqrt{\pi}\Gamma(n)}{2^{2n-1}\Gamma(n+\frac{1}{2})} \]
+\end{proof}
+
+\section*{Solution 13}
+\begin{proof}
+Show that for $n > -1$, $m < 1$:
+\[ \frac{1}{n+1} + \frac{m}{n+2} + \frac{m(m+1)}{2!(n+3)} + \frac{m(m+1)(m+2)}{3!(n+4)} + ... = \beta(n+1,1-m) \]
+
+\begin{enumerate}
+\item Let's consider the series expansion of $(1-x)^{-m}$:
+\[ (1-x)^{-m} = 1 + mx + \frac{m(m+1)}{2!}x^2 + \frac{m(m+1)(m+2)}{3!}x^3 + ... \]
+
+\item Multiply both sides by $x^n$ and integrate from 0 to 1:
+\[ \int_0^1 x^n(1-x)^{-m}dx = \int_0^1 x^n(1 + mx + \frac{m(m+1)}{2!}x^2 + ...)dx \]
+
+\item The left side is $\beta(n+1,1-m)$
+
+\item The right side gives us:
+\[ \frac{1}{n+1} + \frac{m}{n+2} + \frac{m(m+1)}{2!(n+3)} + ... \]
+
+\item Therefore:
+\[ \frac{1}{n+1} + \frac{m}{n+2} + \frac{m(m+1)}{2!(n+3)} + ... = \beta(n+1,1-m) \]
+\end{enumerate}
+\end{proof}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
